@@ -12,9 +12,15 @@
     padding: 20px 10px 20px 40px;
     justify-content: space-between;
 }
-.kiri>.fa-bars{
-    margin-top: 10px;
+
+.kiri button{
+    background-color: transparent;
+    color: white;
+    border: none;
+    font-size: 20px;
     cursor: pointer;
+    margin-bottom: 5px;
+
 }
 .link:hover{
     background-color: rgba(255, 255, 255, 0.747);
@@ -27,17 +33,17 @@ a{
 a:hover{
     color: black;
 }
-.kiri button{
-    padding: 8px 10px;
+.kiri>.btn{
+    background-color: rgba(255, 255, 255, 0.747);
+    padding: 10px 10px;
     font-weight: 900;
     font-size: 15px;
     margin-right: 25px;
     cursor: pointer;
     border: none;
     border-radius:5px ;
-    
 }
-button:hover{
+.btn:hover{
     background-color: tomato;
 }
 .nav>.tengah{
@@ -79,8 +85,27 @@ button:hover{
     width: 30%;
     padding: 25px 20px 25px 20px;
     display: flex;
-   
     justify-content: space-between;
+}
+.kategory_movies{
+    background-color: black;
+    color: white;
+    position: absolute;
+    top: 10%;
+    width: 80%;
+    display: grid;
+    z-index: 10;
+    grid-template-columns: repeat(3,1fr);
+}
+ul li{
+    list-style-type: none;
+}
+.li-first{
+    font-size: 30px;
+    margin-bottom: 10px;
+}
+li{
+    padding: 5px;
 }
 @media(max-width:768px){
     .nav>.kiri{
@@ -88,8 +113,8 @@ button:hover{
         padding: 20px 10px 20px 10px;
     }
     .kiri button{
-        margin-right: 25px;
-        margin-left: 20px;
+        margin-right: 10px;
+        margin-left: 10px;
     }
     .nav>.tengah{
         width: 90%;
