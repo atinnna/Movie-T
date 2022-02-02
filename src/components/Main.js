@@ -7,19 +7,17 @@ export default class componentName extends Component {
       this.state = {
          isLoaded : false,
          isi : [],
-         error:null
+         error:null,
       }
     } 
     componentDidMount(){
         let key = "fb280e17a4edec2501eec3c356448bf9"
-        // let image  = `https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=${key}&language=en-US`
-        let urlKey = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity$page=1`;
-        fetch(urlKey)
+        fetch(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity$page=1`)
         .then(resp=>resp.json())
         .then(resul=>{
             this.setState({
                 isLoaded:true,
-                isi:resul.results
+                isi:resul.results,
             })
         },
         (error)=>{
@@ -28,11 +26,10 @@ export default class componentName extends Component {
                 error
             })
         })
-    }
+           }
 
     render() {
         const {isLoaded,isi,error}= this.state
-        // console.log(isi.results)
         if(error){
             return (
                 <div>
@@ -49,17 +46,20 @@ export default class componentName extends Component {
         }
         else{
             return(
-                <div className="popular">
-                    <div className='pop-mo'>
-                        <h3>Popular Movies</h3>
+                <div className="main">
+                     <div className="head-mo">
+                        <h3>Expore MOVIES</h3>
                         <p>This week's top Movies</p>
+                     </div>
+                    <div className='pop-mo'>
                         {
                             isi.map(item=>{
                                 return(
                                     <div className='pop-mov' key ={item.id}>
-                                    <li >{item.original_title}</li>
+                                    <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                    <p>{item.original_title}</p>
                                     </div>
-                                )
+                                ) 
                             })
                         }
                     </div>

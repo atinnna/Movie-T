@@ -1,26 +1,28 @@
+*{
+    margin: 0;
+    box-sizing: border-box;
+}
 .nav{
     background-color: black;
     display: flex;
     width: 100%;
     justify-content: space-between;
     color: white;
+    padding: 15px ;
+    margin-bottom: 20px;
 }
 .nav>.kiri{
     font-size: 20px;
     display: flex;
     width: 15%;
-    padding: 20px 10px 20px 40px;
     justify-content: space-between;
 }
-
 .kiri button{
     background-color: transparent;
     color: white;
     border: none;
-    font-size: 20px;
+    font-size: 10px;
     cursor: pointer;
-    margin-bottom: 5px;
-
 }
 .link:hover{
     background-color: rgba(255, 255, 255, 0.747);
@@ -35,9 +37,9 @@ a:hover{
 }
 .kiri>.btn{
     background-color: rgba(255, 255, 255, 0.747);
-    padding: 10px 10px;
     font-weight: 900;
     font-size: 15px;
+    padding: 7px 10px;
     margin-right: 25px;
     cursor: pointer;
     border: none;
@@ -48,7 +50,6 @@ a:hover{
 }
 .nav>.tengah{
     width: 75%;
-    padding: 20px 50px 20px 50px;
     display: flex;
 }
 .tengah>.inputan{
@@ -60,30 +61,34 @@ a:hover{
     flex-direction: row;
 }
 .inputan>.category{
-    width: 5%;
-    font-size: 20px;
-    padding: 8px 30px;
+    width: 8%;
+    padding-top: 5px;
+    font-size: 15px;
+    text-align: center;
     border-right: 2px solid black;
 }
 .inputan>.search{
-    width: 90%;
+    padding-top: 5px;
+    width: 85%;
     text-align: center;
 }
 .search input{
-    padding: 10px 0;
     outline: none;
     border: none;
     text-align: center;
 }
 .inputan>.s{
     border-left: 2px solid black;
-    width: 5%;
-    padding: 8px;
+    width: 8%;
+    text-align: center;
+    padding-top: 5px;
 }
 .nav>.kanan{
-    padding-top :30px;
+    margin-left: 30px;
+    padding-top: 10px;
+  padding-bottom: 5px;
     width: 30%;
-    padding: 25px 20px 25px 20px;
+    font-size: 15px;
     display: flex;
     justify-content: space-between;
 }
@@ -107,29 +112,43 @@ ul li{
 li{
     padding: 5px;
 }
+/* MAIN */
+.main{
+    padding: 20px;
+}
+.head-mo{
+    margin-left: 20px;
+}
+.pop-mo{
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    row-gap: 20px;
+    column-gap: 50px;
+}
+.pop-mov{
+    background-color: burlywood;
+}
+.img-movies{
+    width: 100%
+}
+
+
 @media(max-width:768px){
-    .nav>.kiri{
-        width: 15%;
-        padding: 20px 10px 20px 10px;
-    }
-    .kiri button{
-        margin-right: 10px;
-        margin-left: 10px;
-    }
     .nav>.tengah{
-        width: 90%;
-        padding: 20px 10px 20px 25px;
-    }
-    .inputan input{
-        width: 75%;
-        padding: 10px 0;
-    }
-    .inputan span{
-        padding: 0 20px;
+        width: 70%;
+        display: flex;
+        margin-left: 20px;
     }
     .nav>.kanan{
-        width: 10%;
-    } 
+      width: 7%;
+      font-size: 10px;
+    }
+    .nav>.kiri{
+        width: 20%;
+      }
     .kanan>.pro, .kanan>.watch{
         display: none;
     }
