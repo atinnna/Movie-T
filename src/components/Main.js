@@ -9,18 +9,10 @@ export default class componentName extends Component {
          isi : [],
          error:null
       }
-    }
-    
+    } 
     componentDidMount(){
         let key = "fb280e17a4edec2501eec3c356448bf9"
-        let k=[];
-        for(let i=0;i<50;i++){
-            k.push(i)
-            // console.log(i)
-        }
-        console.log(k)
         // let image  = `https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=${key}&language=en-US`
-      
         let urlKey = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity$page=1`;
         fetch(urlKey)
         .then(resp=>resp.json())
@@ -28,7 +20,6 @@ export default class componentName extends Component {
             this.setState({
                 isLoaded:true,
                 isi:resul.results
-           
             })
         },
         (error)=>{
@@ -41,9 +32,7 @@ export default class componentName extends Component {
 
     render() {
         const {isLoaded,isi,error}= this.state
-   
         // console.log(isi.results)
-      
         if(error){
             return (
                 <div>
@@ -72,9 +61,8 @@ export default class componentName extends Component {
                                     </div>
                                 )
                             })
-                           }
-                        
-                        </div>
+                        }
+                    </div>
                 </div>
             )
         }
