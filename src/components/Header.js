@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 
 export default class Header extends Component {
     constructor(props) {
@@ -24,7 +25,7 @@ export default class Header extends Component {
 
     NavAfter(){
       return(
-        <div className="kategory_movies">
+        <div className="kategory_movies">         
           <div className='umum'>
               <ul>
                 <li className='li-first'>Movies</li>
@@ -56,20 +57,16 @@ export default class Header extends Component {
               </ul>
           </div>
         </div>
-      )
-    }
+      )}
     
-
-    Navbar=()=>{
-      if(this.state.display === false){
+    NavT = ()=>{
       return(
-        <>
         <div className="nav">
             <div className='kiri'>
-              <button  onClick={this.Show}> <i className="fas fa-bars"></i></button>
-              <a href="" className='btn'>
-              {this.state.title}
-              </a> 
+                <button  onClick={this.Show}> <i className="fas fa-bars"></i></button>
+                <a href="" className='btn'>
+                {this.state.title}
+                </a> 
             </div> 
             <div className='tengah'>
                 <div className='inputan'>
@@ -86,67 +83,36 @@ export default class Header extends Component {
             </div>
             <div className='kanan'>
                 <div className='pro link'>
-                  <a href="">IMDbPro</a>
+                  <a href="">{this.state.title}Pro</a>
                 </div>
                 <div className='watch link'>
-                <a href="">WatchList</a>
+                  <a href="">WatchList</a>
                 </div>
                 <div className='signIn link'>
-                <a href="">Sign In</a>
+                  <a href="">Sign In</a>
                 </div>
             </div>
-        </div>
-      
+    </div>
+      )}
+    Navbar=()=>{
+      if(this.state.display === false){
+      return(
+        <>
+          <this.NavT/>
       </>  
-      )
-    }
-    
+      )}
     else{
       return(
         <>
-        <div className="nav">
-            <div className='kiri'>
-            <button onClick={this.Show}> <i className="fas fa-bars"></i></button>
-              <a href="" className='btn'>
-             IMDb
-              </a> 
-            </div> 
-            <div className='tengah'>
-                <div className='inputan'>
-                    <div className='category'>
-                      All
-                    </div>
-                    <div className='search'>
-                      <input  name="" placeholder='Search IMDb'></input>
-                    </div>
-                    <div className='s'>
-                      <i class="fas fa-search"></i>
-                    </div>
-                </div>
-            </div>
-        <div className='kanan'>
-            <div className='pro link'>
-              <a href="">IMDbPro</a>
-            </div>
-            <div className='watch link'>
-            <a href="">WatchList</a>
-            </div>
-            <div className='signIn link'>
-            <a href="">Sign In</a>
-            </div>
-      </div>
+          <this.NavT/>
+          <this.NavAfter/>
+       </>
+    )}}
+    
+render() {
+  return( 
+  <div>
+    <this.Navbar/>
   </div>
-  <this.NavAfter/>
-  </>
-)
-
-    }
-    }
-  render() {
-    return( 
-    <div>
-      <this.Navbar/>
-    </div>
-    )
-  }
+  )}
 }
