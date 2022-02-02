@@ -12,36 +12,38 @@ export default class componentName extends Component {
     }
     
     componentDidMount(){
-        let urlKey = "https://api.themoviedb.org/3/movie/550?api_key=fb280e17a4edec2501eec3c356448bf9";
-        // let isi = []
+        let key = "fb280e17a4edec2501eec3c356448bf9"
+        let k=[];
+        for(let i=0;i<50;i++){
+            k.push(i)
+            // console.log(i)
+        }
+        console.log(k)
+        // let image  = `https://api.themoviedb.org/3/movie/{movie_id}/images?api_key=${key}&language=en-US`
+      
+        let urlKey = `https://api.themoviedb.org/3/discover/movie?api_key=${key}&language=en-US&sort_by=popularity$page=1`;
         fetch(urlKey)
         .then(resp=>resp.json())
-        .then(result=>{
+        .then(resul=>{
             this.setState({
                 isLoaded:true,
-                isi:result
+                isi:resul.results
+           
             })
         },
-        
         (error)=>{
             this.setState({
                 isLoaded:true,
                 error
             })
-
-        }
-        )
-        
-        // let result = da_json
-        // this.setState({
-        //         isLoaded:true,
-        //         isi:result.isi
-        //     })
+        })
     }
 
     render() {
-        // <this.getData/>
         const {isLoaded,isi,error}= this.state
+   
+        // console.log(isi.results)
+      
         if(error){
             return (
                 <div>
@@ -62,15 +64,16 @@ export default class componentName extends Component {
                     <div className='pop-mo'>
                         <h3>Popular Movies</h3>
                         <p>This week's top Movies</p>
-                        {isi.map(item=>{
-                            return(
-                            // console.log(item);
-                            <li key={item.id}>
-                            {item}
-                            </li>
-                            )
-                        })}
-                    
+                        {
+                            isi.map(item=>{
+                                return(
+                                    <div className='pop-mov' key ={item.id}>
+                                    <li >{item.original_title}</li>
+                                    </div>
+                                )
+                            })
+                           }
+                        
                         </div>
                 </div>
             )
