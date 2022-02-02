@@ -57,7 +57,12 @@ export default class componentName extends Component {
                                 return(
                                     <div className='pop-mov' key ={item.id}>
                                     <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                                    <p>{item.original_title}</p>
+                                    <div className='title_mo'> 
+                                       <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                                       <div className='two-mo'>{item.vote_count} Orang</div>
+                                    </div>
+                                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                                   
                                     </div>
                                 ) 
                             })

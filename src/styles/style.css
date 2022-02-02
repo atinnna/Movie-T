@@ -125,14 +125,28 @@ li{
     align-items: center;
     display: grid;
     grid-template-columns: repeat(4,1fr);
-    row-gap: 20px;
+    row-gap: 40px;
     column-gap: 50px;
 }
 .pop-mov{
-    background-color: burlywood;
+    background-color: black;
+    color: white;
+    padding-bottom: 20px;
 }
 .img-movies{
-    width: 100%
+    width: 100%;
+    height: 250px;
+}
+.title_mo{
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+.fa-heart{
+    color: red;
+}
+.title-year{
+    text-align: center;
 }
 
 
@@ -146,10 +160,16 @@ li{
       width: 7%;
       font-size: 10px;
     }
-    .nav>.kiri{
-        width: 20%;
-      }
+    .kiri>.btn{
+        font-size: 10px;
+        text-align: center;
+    }
     .kanan>.pro, .kanan>.watch{
         display: none;
+    }
+    .pop-mo{
+        grid-template-columns: repeat(3,1fr);
+        row-gap: 30px;
+        column-gap: 20px;
     }
 }

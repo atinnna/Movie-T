@@ -4,7 +4,8 @@ export default class Header extends Component {
     constructor(props) {
       super(props)
       this.state = {
-        display:false
+        display:false,
+        title:"MOV-T"
       }
       this.Show = this.Show.bind(this)
     }
@@ -67,7 +68,7 @@ export default class Header extends Component {
             <div className='kiri'>
               <button  onClick={this.Show}> <i className="fas fa-bars"></i></button>
               <a href="" className='btn'>
-              IMDb
+              {this.state.title}
               </a> 
             </div> 
             <div className='tengah'>
