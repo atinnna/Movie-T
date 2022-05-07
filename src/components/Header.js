@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 
-
 export default class Header extends Component {
     constructor(props) {
       super(props)
@@ -95,20 +94,21 @@ export default class Header extends Component {
             </div>
     </div>
       )}
+
     Navbar=()=>{
       if(this.state.display === false){
       return(
         <>
           <this.NavT/>
-      </>  
+        </>  
       )}
-    else{
-      return(
-        <>
-          <this.NavT/>
-          <this.NavAfter/>
-       </>
-    )}}
+      else{
+        return(
+          <>
+            <this.NavT/>
+            <this.NavAfter/>
+        </>
+      )}}
     
 render() {
   return( 
