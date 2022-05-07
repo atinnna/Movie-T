@@ -62,26 +62,32 @@ a:hover{
 }
 .inputan>.category{
     width: 8%;
-    padding-top: 5px;
+    padding-top: 7px;
     font-size: 15px;
     text-align: center;
     border-right: 2px solid black;
 }
 .inputan>.search{
     padding-top: 5px;
-    width: 85%;
+    width: 100%;
     text-align: center;
 }
 .search input{
     outline: none;
     border: none;
+    width: 90%;
     text-align: center;
 }
-.inputan>.s{
-    border-left: 2px solid black;
+
+form button{
+  
     width: 8%;
     text-align: center;
     padding-top: 5px;
+    border: none;
+    background-color: none;
+   
+  
 }
 .nav>.kanan{
     margin-left: 30px;

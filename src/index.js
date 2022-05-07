@@ -11,6 +11,7 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route path='/' element={<Main/>}/>
+        <Route path='/:keySearch' element={<Main/>}/>
       </Routes>
     </Router>
   </React.StrictMode>,

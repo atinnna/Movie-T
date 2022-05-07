@@ -1,14 +1,30 @@
-import React, { Component } from 'react';
+import React, { Component, useState } from 'react';
 import { Link } from 'react-router-dom';
+import {Redirect} from 'react-router-dom';
 
 export default class Header extends Component {
     constructor(props) {
       super(props)
       this.state = {
         display:false,
-        title:"MOV-T"
+        title:"MOV-T",
+        kata_kunci:""
       }
       this.Show = this.Show.bind(this)
+      this.SetKataKunci = this.SetKataKunci.bind(this)
+      this.Submit = this.Submit.bind(this)
+    }
+    SetKataKunci(e){
+      this.setState({
+       kata_kunci : e.target.value 
+    })
+    }
+    Submit(e){
+      e.preventDefault()
+      this.setState({
+        kata_kunci : this.state.kata_kunci
+      })
+      console.log( this.state.kata_kunci)
     }
 
     Show(){
@@ -64,9 +80,6 @@ export default class Header extends Component {
         <div className="nav">
             <div className='kiri'>
                 <button  onClick={this.Show}> <i className="fas fa-bars"></i></button>
-                <a href="" className='btn'>
-                {this.state.title}
-                </a> 
             </div> 
             <div className='tengah'>
                 <div className='inputan'>
@@ -74,10 +87,10 @@ export default class Header extends Component {
                       All
                     </div>
                     <div className='search'>
-                      <input  name="" placeholder='Search IMDb'></input>
-                    </div>
-                    <div className='s'>
-                      <i class="fas fa-search"></i>
+                      <form onSubmit={this.Submit}>
+                      <input  name="keySearch" placeholder='Search IMDb' onChange={this.SetKataKunci}></input>
+                      <button type="submit"><i class="fas fa-search"></i></button>
+                      </form>
                     </div>
                 </div>
             </div>

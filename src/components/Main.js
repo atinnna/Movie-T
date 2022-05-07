@@ -1,7 +1,13 @@
 import React, { Component } from 'react'
 import {Img} from 'react-image'
 import Header from './Header'
+import { useParams } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+function Penc(){
+    // let navigate = useNavigate()
+    let {keySearch} = useParams()  
 
+}
 export default class componentName extends Component {
     constructor(props) {
       super(props)
@@ -11,6 +17,7 @@ export default class componentName extends Component {
          top:[],
          terbaru:[],
          error:null,
+      
       }
     } 
     componentDidMount(){
