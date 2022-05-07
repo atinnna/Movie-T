@@ -86,13 +86,11 @@ form button{
     padding-top: 5px;
     border: none;
     background-color: none;
-   
-  
 }
 .nav>.kanan{
     margin-left: 30px;
     padding-top: 10px;
-  padding-bottom: 5px;
+    padding-bottom: 5px;
     width: 30%;
     font-size: 15px;
     display: flex;
@@ -120,17 +118,36 @@ li{
 }
 /* MAIN */
 .main{
+    margin-top: 2.5%;
     padding: 20px;
 }
 .head-mo{
     margin-left: 20px;
+   
+    color: #f2f2f2;
+  
+    /* width: 100%; */
+    display: flex;
+    justify-content: space-between;
 }
+.head-mo>.hmkk,.head-mo>.hmk {
+    padding: 10px;
+    background-color: black;
+}
+.hmkk button{
+    border: none;
+    background-color: black;
+    padding: 10px;
+    cursor: pointer;
+    color: #f2f2f2;
+}
+
 .pop-mo{
     padding: 20px;
     justify-content: center;
     align-items: center;
     display: grid;
-    grid-template-columns: repeat(4,1fr);
+    grid-template-columns: repeat(6,1fr);
     row-gap: 40px;
     column-gap: 50px;
 }
@@ -144,9 +161,17 @@ li{
     height: 250px;
 }
 .title_mo{
-    padding: 20px;
+    padding: 0px;
     display: flex;
     justify-content: space-between;
+}
+.title_mo>.one_mo{
+    height: 50px;
+    background-color: rgb(55, 55, 61);
+    border-radius: 0 20px 20px 0;
+    position: absolute;
+    z-index: 1;
+    padding: 15px 15px;
 }
 .fa-heart{
     color: red;

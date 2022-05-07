@@ -3,10 +3,10 @@ import {Img} from 'react-image'
 import Header from './Header'
 import { useParams } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 function Penc(){
     // let navigate = useNavigate()
     let {keySearch} = useParams()  
-
 }
 export default class componentName extends Component {
     constructor(props) {
@@ -25,15 +25,15 @@ export default class componentName extends Component {
         Promise.all([
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&sort_by=popularity$page=1`),
         fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`),
-        fetch(`https://api.themoviedb.org/3/movie/latest?api_key=${key}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US`)
         ])
         .then(([resp1,resp2,resp3])=>Promise.all([resp1.json(),resp2.json(),resp3.json()]))
-        .then(([resul,topk,terbarum])=>{
+        .then(([resul,topk,trending])=>{
             this.setState({
                 isLoaded:true,
                 isi:resul.results,
                 top:topk.results,
-                terbaru:terbarum
+                trending: trending.results
             })
         },
         (error)=>{
@@ -47,20 +47,24 @@ export default class componentName extends Component {
     GetPopular=()=>{
         return(
         <div className="main">
-            <div className="head-mo">
-                <h3>Popular MOVIES</h3>
-                <p>Film Popular minggu ini </p>
+            <div className="head-mo">    
+                <div className='hmk'>
+                    <h3>POPULAR MOVIES</h3> 
+                    <p>Film Popular minggu ini </p>
+                </div>
+               <div className='hmkk'>
+                   <button>Selengkapnya</button>
+               </div>
             </div>
             <div className='pop-mo'>
                 {
                     this.state.isi.map(item=>{
                         return(
                             <div className='pop-mov' key ={item.id}>
-                                <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                                <div className='title_mo'> 
-                                    <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
-                                    <div className='two-mo'>{item.vote_count} Orang</div>
-                                </div>
+                                <div className='title_mo'>               
+                                        <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                        <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                                    </div>
                                 <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
                             </div>
                         ) 
@@ -74,28 +78,66 @@ export default class componentName extends Component {
         return(
             <div className="main">
                 <div className="head-mo">
-                    <h3>Top MOVIES</h3>
-                    <p>Film dengan Rating Terbanyak</p>
+                    <div className='hmk'>
+                        <h3>Top MOVIES</h3>
+                        <p>Film dengan Rating Terbanyak</p>
+                    </div>
+                    <div className='hmkk'>
+                        <button>Selengkapnya</button>
+                    </div>
                 </div>
                 <div className='pop-mo'>
                     {
                         this.state.top.map(item=>{
                             return(
                                 <div className='pop-mov' key ={item.id}>
-                                    
-                                    <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                                    <div className='title_mo'> 
+                                <div className='title_mo'>               
+                                        <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
                                         <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
-                                        <div className='two-mo'>{item.vote_count} Orang</div>
                                     </div>
-                                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
-                                </div>
+                                <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                            </div>
                             ) 
                         })
                     }
                 </div>
             </div>
             )}
+    
+    GetTrending = ()=>{
+        return(
+            <div className="main">
+                <div className="head-mo">
+                    <div className='hmk'>
+                    <h3>Trending MOVIES</h3>
+                        <p>Film yang trending</p>
+                    </div>
+                    <div className='hmkk'>
+                        <button>Selengkapnya</button>
+                    </div>
+                    </div>
+                <div className='pop-mo'>
+                    {
+                        this.state.trending.map(item=>{
+                            return(
+                            <div className='pop-mov' key ={item.id}>
+                            <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                                <div className='title_mo'>               
+                                        <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                        <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                                    </div>
+                                <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                            
+                           </Link>
+                           </div>
+                          
+                            ) 
+                        })
+                    }
+                </div>
+            </div>
+        )
+    }
 
     
     render() {
@@ -117,8 +159,10 @@ export default class componentName extends Component {
         else{
             return(
                 <>
+                <this.GetTrending/>
                 <this.GetPopular/>
                 <this.GetTop/>
+                
                 </>
             )
         }
