@@ -25,9 +25,12 @@ export default class componentName extends Component {
         Promise.all([
         fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&sort_by=popularity$page=1`),
         fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`),
-        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US`)
+        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US`),
+        
         ])
-        .then(([resp1,resp2,resp3])=>Promise.all([resp1.json(),resp2.json(),resp3.json()]))
+        .then(([resp1,resp2,resp3])=>
+      
+        Promise.all([resp1.json(),resp2.json(),resp3.json()]))
         .then(([resul,topk,trending])=>{
             this.setState({
                 isLoaded:true,
@@ -42,9 +45,11 @@ export default class componentName extends Component {
                 error
             })
             })
+            
         }
     
     GetPopular=()=>{
+        console.log(`Iyeyey ${this.state.isi}`);
         return(
         <div className="main">
             <div className="head-mo">    
@@ -58,6 +63,7 @@ export default class componentName extends Component {
             </div>
             <div className='pop-mo'>
                 {
+                  
                     this.state.isi.map(item=>{
                         return(
                             <div className='pop-mov' key ={item.id}>

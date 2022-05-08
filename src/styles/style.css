@@ -17,6 +17,9 @@
     width: 15%;
     justify-content: space-between;
 }
+.fa-bars{
+    font-size: 20px;
+}
 .kiri button{
     background-color: transparent;
     color: white;
