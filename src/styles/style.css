@@ -125,6 +125,9 @@ li{
     padding: 20px;
     min-height: 80vh;
 }
+.main h2{
+    padding: 10px;
+}
 .head-mo{
     margin-left: 20px;
     color: #f2f2f2;
@@ -190,13 +193,13 @@ li{
     grid-template-columns: repeat(2,1fr);
     grid-column-gap: 0px;
     padding: 0 10%;
-    height: 70vh
+    height: fit-content
 }
 .grid img{
     position: relative;
-    left: 20%;
-    width: 70%;
-    height: 55vh;
+    left: 40%;
+    width: 50%;
+    height: 70vh;
 }
 .grid>.m-deskripsi{
     width: 100%;
@@ -240,7 +243,7 @@ li{
     display: grid;
     grid-template-columns: repeat(10,1fr);
     grid-column-gap: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 10px;
 }
 .paginationBtn{
     width: 100%;
@@ -251,31 +254,51 @@ li{
     padding: 10px;
     border: none;
     width: 45%;
-}.paginationBtn>.nextLinkBtn{
+}
+.paginationBtn>.nextLinkBtn{
     padding: 10px;
-    border: none;
     width: 45%;
     text-align: right;
-    
+}
+.prevBtn a,.nextLinkBtn a{
+    padding: 10px;
+    border: 2px solid black;
+    background-color: grey;
+    border-radius: 5px;
+    width: 45%;
+    text-align: right;
 }
 .paginationBtn li a{
-   background-color: azure;
+   /* background-color: azure; */
     height: 5px;
     padding: 10px;
-    border: 1px solid black;
+    color: white;
+    background-color: grey;
+}
+.paginationActive a{
+    color: white;
 }
 .paginationBtn> li,.paginationBtn>.paginationActive{
     width: 5%;
     padding: 10px 0px;
+    border-radius: 10px;
 }
-
+.paginationActive a, .paginationBtn a:hover{
+    background-color: rgb(21, 21, 22);   
+}
 .paginationBtn a{
-    color: black;
     cursor: pointer;
+    font-weight: bolder;
+}
+.sim-movie{
+    height: 30vh;
 }
 .grid-simir Img{
     width: 100%;
-    height: 30vh;
+    height: 60%;
+}
+.grid-simir span{
+    height: 40%;
 }
 
 

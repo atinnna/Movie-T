@@ -113,10 +113,11 @@ function SimilarMovies(){
     },[])
     console.log(sama)
     // pagination
-    const [pageNumber, setPage] =useState(0)
-    const movPerPage = 10
-    const pagesVisited = pageNumber * movPerPage
-    const displayMovie = sama.slice(pagesVisited, pagesVisited+movPerPage).map((hasil=>{
+    const [noHalaman, setHalaman] =useState(0)
+    const jumlahBoleh = 10
+    const halamanKunjungan = noHalaman * jumlahBoleh
+    const jumlahHalaman = Math.ceil(sama.length/jumlahBoleh)
+    const displayMovie = sama.slice(halamanKunjungan, halamanKunjungan+jumlahBoleh).map((hasil=>{
         return(
         <div className='sim-movie'>
             <Img src={`https://image.tmdb.org/t/p/original/${hasil.poster_path}`}/> <br/>
@@ -124,24 +125,20 @@ function SimilarMovies(){
         </div>
         )
     }))
-
-    const pageCount = Math.ceil(sama.length/movPerPage)
-    const changePage = ({selected})=>{
-        setPage(selected)
+    const gantiHalaman = ({selected})=>{
+        setHalaman(selected)
     }
-    // https://api.themoviedb.org/3/movie/{movie_id}/similar?api_key=<<api_key>>&language=en-US&page=1
     return(
         <div className='main'>
             <h2>Similar Movies</h2>
             <div className='grid-simir'>
                {displayMovie}
-             
             </div>
             <ReactPaginate 
-                previousLabel={"Previous"}
-                nextLabel={"Next"}
-                pageCount={pageCount}
-                onPageChange={changePage}
+                previousLabel={"<Prev"}
+                nextLabel={">Next"}
+                pageCount={jumlahHalaman}
+                onPageChange={gantiHalaman}
                 containerClassName={"paginationBtn"}
                 previousClassName={"prevBtn"}
                 nextClassName={"nextLinkBtn"}
@@ -152,7 +149,25 @@ function SimilarMovies(){
     )
 }
 
-
+function RecomendasiFilm(){
+    let key = "fb280e17a4edec2501eec3c356448bf9"
+    const parameter = useParams()
+    const [rek,setRek] = useState([])
+    useEffect(()=>{
+        axios.get(`https://api.themoviedb.org/3/movie/${parameter.id}/recommendations?api_key=${key}&language=en-US&page=1`)
+        .then(res=>{
+            const result = res.data
+            setRek(result)
+        })
+        .catch(err=>console.log(err))
+    },[])
+    console.log(rek)
+    return  (
+        <>
+        
+        </>
+    )
+}
 
 
 
@@ -163,6 +178,7 @@ export default class CurrentMovie extends Component {
             <div>
                 <View/>
                 <SimilarMovies/>
+                <RecomendasiFilm/>
             </div>
         )
     }
