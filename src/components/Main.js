@@ -67,11 +67,13 @@ export default class componentName extends Component {
                     this.state.isi.map(item=>{
                         return(
                             <div className='pop-mov' key ={item.id}>
-                                <div className='title_mo'>               
-                                        <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                                        <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                                 <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                                    <div className='title_mo'>               
+                                            <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                            <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
                                     </div>
-                                <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                                </Link>
                             </div>
                         ) 
                     })
@@ -96,12 +98,14 @@ export default class componentName extends Component {
                     {
                         this.state.top.map(item=>{
                             return(
-                                <div className='pop-mov' key ={item.id}>
-                                <div className='title_mo'>               
-                                        <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                                        <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                            <div className='pop-mov' key ={item.id}>
+                                 <Link className='link-mov' to={`/currentMovie/${item.id}`} key = {item.id}>
+                                    <div className='title_mo'>               
+                                            <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                            <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
                                     </div>
-                                <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                                </Link>
                             </div>
                             ) 
                         })
@@ -127,14 +131,13 @@ export default class componentName extends Component {
                         this.state.trending.map(item=>{
                             return(
                             <div className='pop-mov' key ={item.id}>
-                            <Link to={`/currentMovie/${item.id}`} key = {item.id}>
-                                <div className='title_mo'>               
-                                        <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                                        <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                                <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                                    <div className='title_mo'>               
+                                            <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                            <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
                                     </div>
-                                <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
-                            
-                           </Link>
+                                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                            </Link>
                            </div>
                           
                             ) 
