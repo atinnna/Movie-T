@@ -7,7 +7,7 @@ export default class Header extends Component {
       super(props)
       this.state = {
         display:false,
-        title:"MOV-T",
+        title:"MOVT",
         kata_kunci:""
       }
       this.Show = this.Show.bind(this)
@@ -83,12 +83,9 @@ export default class Header extends Component {
             </div> 
             <div className='tengah'>
                 <div className='inputan'>
-                    <div className='category'>
-                      All
-                    </div>
                     <div className='search'>
                       <form onSubmit={this.Submit}>
-                      <input  name="keySearch" placeholder='Search IMDb' onChange={this.SetKataKunci}></input>
+                      <input  name="keySearch" placeholder='Search Movies' onChange={this.SetKataKunci}></input>
                       <button type="submit"><i class="fas fa-search"></i></button>
                       </form>
                     </div>
@@ -96,7 +93,7 @@ export default class Header extends Component {
             </div>
             <div className='kanan'>
                 <div className='pro link'>
-                  <a href="">{this.state.title}Pro</a>
+                  <a href="">LikeList</a>
                 </div>
                 <div className='watch link'>
                   <a href="">WatchList</a>

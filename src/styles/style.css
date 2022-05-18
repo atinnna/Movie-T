@@ -8,9 +8,7 @@
     width: 100%;
     justify-content: space-between;
     color: white;
-    padding: 15px ;
-    /* margin-bottom: 20px; */
-    
+    padding: 25px ;
 }
 .nav>.kiri{
     font-size: 20px;
@@ -55,6 +53,7 @@ a:hover{
 .nav>.tengah{
     width: 75%;
     display: flex;
+    font-size: 25px;
 }
 .tengah>.inputan{
     background-color: white;
@@ -82,20 +81,18 @@ a:hover{
     width: 90%;
     text-align: center;
 }
-
 form button{  
     width: 8%;
     text-align: center;
-    padding-top: 5px;
     border: none;
-    background-color: none;
+    background-color: white;
 }
 .nav>.kanan{
     margin-left: 30px;
     padding-top: 10px;
     padding-bottom: 5px;
     width: 30%;
-    font-size: 15px;
+    font-size: 20px;
     display: flex;
     justify-content: space-between;
 }
@@ -121,23 +118,24 @@ li{
 }
 /* MAIN */
 .main{
-    margin-top: 2.5%;
-    padding: 20px;
+    padding: 20px 0;
     min-height: 80vh;
 }
 .main h2{
     padding: 10px;
 }
 .head-mo{
-    margin-left: 20px;
+    padding: 20px;
     color: #f2f2f2;
-    /* width: 100%; */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
     display: flex;
     justify-content: space-between;
+    background-color: black;
 }
 .head-mo>.hmkk,.head-mo>.hmk {
     padding: 10px;
-    background-color: black;
 }
 .hmkk button{
     border: none;
@@ -149,8 +147,8 @@ li{
 
 .pop-mo{
     padding: 20px;
-    justify-content: center;
-    align-items: center;
+    /* justify-content: center;
+    align-items: center; */
     display: grid;
     grid-template-columns: repeat(6,1fr);
     row-gap: 40px;

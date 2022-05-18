@@ -1,71 +1,47 @@
-import React, { Component } from 'react'
+import React, { Component, useEffect, useState } from 'react'
+import axios from 'axios'
 import {Img} from 'react-image'
-import Header from './Header'
-import { useParams } from 'react-router-dom';
-import { useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
-function Penc(){
-    // let navigate = useNavigate()
-    let {keySearch} = useParams()  
-}
-export default class componentName extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-         isLoaded : false,
-         isi : [],
-         top:[],
-         terbaru:[],
-         error:null,
-      
-      }
-    } 
-    componentDidMount(){
-        let key = "fb280e17a4edec2501eec3c356448bf9"
-        Promise.all([
-        fetch(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&sort_by=popularity$page=1`),
-        fetch(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`),
-        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US`),
-        
-        ])
-        .then(([resp1,resp2,resp3])=>
-      
-        Promise.all([resp1.json(),resp2.json(),resp3.json()]))
-        .then(([resul,topk,trending])=>{
-            this.setState({
-                isLoaded:true,
-                isi:resul.results,
-                top:topk.results,
-                trending: trending.results
-            })
-        },
-        (error)=>{
-            this.setState({
-                isLoaded:true,
-                error
-            })
-            })
-            
+import ReactPaginate from 'react-paginate' 
+
+function Popular() {
+    const key = "fb280e17a4edec2501eec3c356448bf9"
+    const [pop,setPop] = useState([])
+    const [judul,deskripsi] = useState({
+        title:'POPULAR MOVIES',
+        desk:'Film Popular minggu ini'
+    })
+    useEffect(()=>{
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&sort_by=popularity&page=2`)
+        .then(res=>{
+            const d = res.data.results
+            setPop(d)
         }
-    
-    GetPopular=()=>{
-        console.log(`Iyeyey ${this.state.isi}`);
+        ).catch(err=>console.log(err))
+    },[])
+    // pagination
+    const [no,setNo] = useState(0)
+    const jmlisiPerpage = 6
+    const currentPage = no*jmlisiPerpage
+    const Allpage = Math.ceil(pop.length/jmlisiPerpage)
+    const disMov = pop.slice(currentPage,currentPage+jmlisiPerpage)
+    const gantiHalaman = ({selected})=>{
+        setNo(selected)
+    }
         return(
-        <div className="main">
+            <>
             <div className="head-mo">    
                 <div className='hmk'>
-                    <h3>POPULAR MOVIES</h3> 
-                    <p>Film Popular minggu ini </p>
+                    <h3>{judul.title}</h3> 
+                    <p>{judul.desk}</p>
                 </div>
                <div className='hmkk'>
                    <button>Selengkapnya</button>
                </div>
             </div>
             <div className='pop-mo'>
-                {
-                  
-                    this.state.isi.map(item=>{
-                        return(
+                { disMov.map(item=>{
+                    return(
                             <div className='pop-mov' key ={item.id}>
                                  <Link to={`/currentMovie/${item.id}`} key = {item.id}>
                                     <div className='title_mo'>               
@@ -75,31 +51,68 @@ export default class componentName extends Component {
                                     <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
                                 </Link>
                             </div>
-                        ) 
+                    )
                     })
                 }
             </div>
-        </div>
-        )}
+            <ReactPaginate 
+                previousLabel={"<Prev"}
+                nextLabel={">Next"}
+                pageCount={Allpage}
+                onPageChange={gantiHalaman}
+                containerClassName={"paginationBtn"}
+                previousClassName={"prevBtn"}
+                nextClassName={"nextLinkBtn"}
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+                />
+            </>
+    )
+}
 
-    GetTop = ()=>{
+function Top() {
+    const key = "fb280e17a4edec2501eec3c356448bf9"
+    const [top,setTop] = useState([])
+    const [judul,deskripsi] = useState({
+        title:'TOP MOVIES',
+        desk:'Film Top minggu ini'
+    })
+    useEffect(()=>{
+        axios.get(`https://api.themoviedb.org/3/movie/top_rated?api_key=${key}&language=en-US&page=1`)
+        .then(res=>{
+            const d = res.data.results
+            setTop(d)
+        }
+        ).catch(err=>console.log(err))
+    },[])
+
+    const [no,setNo] = useState(0)
+    const jmlPage = 6
+    const currentPage = no*jmlPage
+    const jmlPag = Math.ceil(top.length/jmlPage)
+    // const Allpage = Math.ceil(top.length/jmlPage)
+    const disMov = top.slice(currentPage,currentPage+jmlPage)
+    const gantiHalaman = ({selected})=>{
+        setNo(selected)
+    }
+    
         return(
-            <div className="main">
-                <div className="head-mo">
-                    <div className='hmk'>
-                        <h3>Top MOVIES</h3>
-                        <p>Film dengan Rating Terbanyak</p>
-                    </div>
-                    <div className='hmkk'>
-                        <button>Selengkapnya</button>
-                    </div>
+            <>
+             <div className="head-mo">    
+                <div className='hmk'>
+                    <h3>{judul.title}</h3> 
+                    <p>{judul.desk}</p>
                 </div>
-                <div className='pop-mo'>
-                    {
-                        this.state.top.map(item=>{
-                            return(
+               <div className='hmkk'>
+                   <button>Selengkapnya</button>
+               </div>
+            </div>
+            <div className='pop-mo'>
+                { disMov.map(item=>{
+                    return(
+                   
                             <div className='pop-mov' key ={item.id}>
-                                 <Link className='link-mov' to={`/currentMovie/${item.id}`} key = {item.id}>
+                                 <Link to={`/currentMovie/${item.id}`} key = {item.id}>
                                     <div className='title_mo'>               
                                             <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
                                             <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
@@ -107,73 +120,129 @@ export default class componentName extends Component {
                                     <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
                                 </Link>
                             </div>
-                            ) 
-                        })
-                    }
-                </div>
+                    )
+                    })
+                }
             </div>
-            )}
-    
-    GetTrending = ()=>{
+            <ReactPaginate 
+                previousLabel={"<Prev"}
+                nextLabel={">Next"}
+                pageCount={jmlPag}
+                onPageChange={gantiHalaman}
+                containerClassName={"paginationBtn"}
+                previousClassName={"prevBtn"}
+                nextClassName={"nextLinkBtn"}
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+                />
+            </>
+    )
+}
+
+function Trending(){
+    const key = "fb280e17a4edec2501eec3c356448bf9"
+    const [trending,setTrending] = useState([])
+    const [judul,deskripsi] = useState({
+        title:'TRENDING MOVIES',
+        desk:'Film trending minggu ini'
+    })
+    useEffect(()=>{
+        axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US`)
+        .then(res=>{
+            const d = res.data.results
+            setTrending(d)
+        }
+        ).catch(err=>console.log(err))
+    },[])
+    const [noHal,setNoHal] = useState(0)
+    const jmlBoleh = 6
+    const PageNow = noHal*jmlBoleh
+    const pageJmlNow = Math.ceil(trending.length/jmlBoleh)
+    const dataNow=  trending.slice(PageNow,PageNow+jmlBoleh)
+    const gantiHalaman = ({selected})=>{
+        setNoHal(selected)
+    }
         return(
-            <div className="main">
-                <div className="head-mo">
-                    <div className='hmk'>
-                    <h3>Trending MOVIES</h3>
-                        <p>Film yang trending</p>
-                    </div>
-                    <div className='hmkk'>
-                        <button>Selengkapnya</button>
-                    </div>
-                    </div>
-                <div className='pop-mo'>
-                    {
-                        this.state.trending.map(item=>{
-                            return(
+            <>
+             <div className="head-mo">    
+                <div className='hmk'>
+                    <h3>{judul.title}</h3> 
+                    <p>{judul.desk}</p>
+                </div>
+               <div className='hmkk'>
+                   <button>Selengkapnya</button>
+               </div>
+            </div>
+       
+            <div className='pop-mo'>
+                { dataNow.map(item=>{
+                    return(
+                   
                             <div className='pop-mov' key ={item.id}>
-                                <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                                 <Link to={`/currentMovie/${item.id}`} key = {item.id}>
                                     <div className='title_mo'>               
                                             <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
                                             <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
                                     </div>
                                     <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
-                            </Link>
-                           </div>
-                          
-                            ) 
-                        })
-                    }
-                </div>
+                                </Link>
+                            </div>
+                    )})
+                }
+            </div>
+            <ReactPaginate 
+                previousLabel={"<Prev"}
+                nextLabel={">Next"}
+                pageCount={pageJmlNow}
+                onPageChange={gantiHalaman}
+                containerClassName={"paginationBtn"}
+                previousClassName={"prevBtn"}
+                nextClassName={"nextLinkBtn"}
+                disabledClassName={'paginationDisabled'}
+                activeClassName={'paginationActive'}
+                />
+            </>
+            
+    )
+}
+
+function Movies(){
+    const [handling,setHandling] = useState({
+        error:null,
+        isLoaded: true
+    })
+    if(handling.error){
+        return (
+            <div>
+                Error: {handling.error.message}
             </div>
         )
     }
-
+    else if(!handling.isLoaded){
+        return(
+            <div>
+                Loading
+            </div>
+        )
+    }
+    else{
+        return(
+            <>
+            <Trending/>
+            <Popular/>
+            <Top/>
+            </>
+        )
+    }
     
+}
+
+export default class componentName extends Component {
     render() {
-        const {isLoaded,error}= this.state
-        if(error){
-            return (
-                <div>
-                    Error: {error.message}
-                </div>
-            )
-        }
-        else if(!isLoaded){
-            return(
-                <div>
-                    Loading
-                </div>
-            )
-        }
-        else{
-            return(
-                <>
-                <this.GetTrending/>
-                <this.GetPopular/>
-                <this.GetTop/>
-                
-                </>
-            )
-        }
+        return(
+        <div className="main">
+            <Movies/>
+        </div>
+        )
     }
 }
