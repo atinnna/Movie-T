@@ -5,6 +5,7 @@ import { useLocation, Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Img} from 'react-image'
 import ReactPaginate from 'react-paginate';
+import Header from './Header';
 
 function View(){
     let key = "fb280e17a4edec2501eec3c356448bf9"
@@ -175,11 +176,14 @@ export default class CurrentMovie extends Component {
     render() {
             
         return (
+            <>
+            <Header/>
             <div>
                 <View/>
                 <SimilarMovies/>
                 <RecomendasiFilm/>
             </div>
+            </>
         )
     }
 }

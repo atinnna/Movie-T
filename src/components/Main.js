@@ -3,6 +3,75 @@ import axios from 'axios'
 import {Img} from 'react-image'
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate' 
+import imgj from '../florian-klauer-LmkaYtMpNS8-unsplash.jpg'
+import Header from './Header';
+
+function Indonesia(){
+    const [movie,setMovie] = useState([])
+    const api_key ='fb280e17a4edec2501eec3c356448bf9'
+    // const tanggal_rilis1 = '2022-01-01'
+    // const tanggal_rilis2 = '2022-05-18'
+    useEffect(()=>{
+        const dd = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_original_language=ko`
+        axios.get(dd)
+        .then(res=>{
+            const content = res.data.results
+            setMovie(content)
+        })
+        .catch(err=>console.log(err))
+    },[])
+    console.log(movie)
+    const [noHal,setNoHal] = useState(0)
+    const jmlBoleh = 6
+    const PageNow = noHal*jmlBoleh
+    const pageJmlNow = Math.ceil(movie.length/jmlBoleh)
+    const dataNow=  movie.slice(PageNow,PageNow+jmlBoleh)
+    const gantiHalaman = ({selected})=>{
+    setNoHal(selected)
+    }
+    return(
+        <>
+        <div className="head-mo">    
+           <div className='hmk'>
+               <h3>Indonesia</h3> 
+               <p>Film indoneia terbaru</p>
+           </div>
+          <div className='hmkk'>
+              <button>Selengkapnya</button>
+          </div>
+       </div>
+  
+       <div className='pop-mo'>
+           { dataNow.map(item=>{
+               return(
+              
+                       <div className='pop-mov' key ={item.id}>
+                            <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                               <div className='title_mo'>               
+                                       <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                       <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                               </div>
+                               <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                           </Link>
+                       </div>
+               )})
+           }
+       </div> 
+        <ReactPaginate 
+           previousLabel={"<Prev"}
+           nextLabel={">Next"}
+           pageCount={pageJmlNow}
+           onPageChange={gantiHalaman}
+           containerClassName={"paginationBtn"}
+           previousClassName={"prevBtn"}
+           nextClassName={"nextLinkBtn"}
+           disabledClassName={'paginationDisabled'}
+           activeClassName={'paginationActive'}
+           />
+       </>
+
+    )
+}
 
 function Popular() {
     const key = "fb280e17a4edec2501eec3c356448bf9"
@@ -12,7 +81,7 @@ function Popular() {
         desk:'Film Popular minggu ini'
     })
     useEffect(()=>{
-        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&sort_by=popularity&page=2`)
+        axios.get(`https://api.themoviedb.org/3/movie/popular?api_key=${key}&language=en-US&sort_by=popularity&&language=id-ID&region=ID&page=2`)
         .then(res=>{
             const d = res.data.results
             setPop(d)
@@ -206,6 +275,9 @@ function Trending(){
     )
 }
 
+
+
+
 function Movies(){
     const [handling,setHandling] = useState({
         error:null,
@@ -228,6 +300,7 @@ function Movies(){
     else{
         return(
             <>
+            <Indonesia/>
             <Trending/>
             <Popular/>
             <Top/>
@@ -240,9 +313,12 @@ function Movies(){
 export default class componentName extends Component {
     render() {
         return(
-        <div className="main">
+        <>
+        <Header/>
+        <div className="main" style={{backgroundImage:`url(${imgj})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
             <Movies/>
         </div>
+        </>
         )
     }
 }

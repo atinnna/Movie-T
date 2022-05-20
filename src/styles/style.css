@@ -120,6 +120,7 @@ li{
 .main{
     padding: 20px 0;
     min-height: 80vh;
+   
 }
 .main h2{
     padding: 10px;
@@ -132,7 +133,7 @@ li{
     background-position: center;
     display: flex;
     justify-content: space-between;
-    background-color: black;
+    background-color: transparent;
 }
 .head-mo>.hmkk,.head-mo>.hmk {
     padding: 10px;
@@ -153,6 +154,9 @@ li{
     grid-template-columns: repeat(6,1fr);
     row-gap: 40px;
     column-gap: 50px;
+}
+.paginationBtn{
+    margin-bottom: 20px;
 }
 .pop-mov{
     background-color: black;

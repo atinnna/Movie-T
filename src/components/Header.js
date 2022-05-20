@@ -1,46 +1,15 @@
-import React, { Component, useState } from 'react';
-import { Link } from 'react-router-dom';
-import {Redirect} from 'react-router-dom';
-
-export default class Header extends Component {
-    constructor(props) {
-      super(props)
-      this.state = {
-        display:false,
-        title:"MOVT",
-        kata_kunci:""
-      }
-      this.Show = this.Show.bind(this)
-      this.SetKataKunci = this.SetKataKunci.bind(this)
-      this.Submit = this.Submit.bind(this)
-    }
-    SetKataKunci(e){
-      this.setState({
-       kata_kunci : e.target.value 
-    })
-    }
-    Submit(e){
-      e.preventDefault()
-      this.setState({
-        kata_kunci : this.state.kata_kunci
-      })
-      console.log( this.state.kata_kunci)
-    }
-
-    Show(){
-      this.setState((state)=>{
-        if(state.display === false){
-          return{display:true}
-        }
-        else{
-          return{display:false}
-          }
-        }
-      )
-    }
-
-    NavAfter(){
-      return(
+import React, { useState,useEffect} from 'react'
+import { Link } from 'react-router-dom'
+import axios from 'axios'
+function DispKategori(){
+    const [movie,setMovie] = useState([])
+    const negara = {
+        "indonesia":"id",
+        "korea":"ko",
+        "jepang":"ja",
+        "china":"zh"
+    } 
+    return(
         <div className="kategory_movies">         
           <div className='umum'>
               <ul>
@@ -65,27 +34,74 @@ export default class Header extends Component {
           <div className='genre-country'>
               <ul>
                 <li className='li-first'>Country</li>
+                <Link to={`/negara/${negara.indonesia}`}>
                 <li>Indonesia</li>
+                </Link>
+                <Link to={`/negara/${negara.korea}`}>
                 <li>Korea</li>
-                <li>Amerika</li>
+                </Link>
+                <Link to={`/negara/${negara.jepang}`}>
                 <li>Jepang</li>
+                </Link>
+                <Link to={`/negara/${negara.china}`}>
                 <li>China</li>
+                </Link>
+               
               </ul>
           </div>
         </div>
-      )}
-    
-    NavT = ()=>{
+    )
+}
+
+function Navbar(){
+    const [state,setState] = useState({
+        display:true,
+        title:"MOvBI",
+        kata_kunci:""
+    })
+    if(state.display===false){
+        return(          
+            <div className='kiri'>
+                <button  onClick={()=>setState(()=>{
+                    if(state.display === false){
+                        return{display:true}
+                      }
+                      else{
+                        return{display:false}
+                        }
+                })}> <i className="fas fa-bars"></i></button>
+                <span>{state.title}</span>
+                <DispKategori/>
+            </div> 
+        )
+    }
+    else{
+        return(
+            <div className='kiri'>
+                 <button onClick={()=>setState(()=>{
+                    if(state.display === false){
+                        return{display:true}
+                      }
+                      else{
+                        return{display:false}
+                        }
+                })}> <i className="fas fa-bars"></i></button>
+                <span>{state.title}</span>
+            </div> 
+        )
+    }
+   
+}
+
+export default function Header() {
       return(
         <div className="nav">
-            <div className='kiri'>
-                <button  onClick={this.Show}> <i className="fas fa-bars"></i></button>
-            </div> 
-            <div className='tengah'>
+        <Navbar/>
+        <div className='tengah'>
                 <div className='inputan'>
                     <div className='search'>
-                      <form onSubmit={this.Submit}>
-                      <input  name="keySearch" placeholder='Search Movies' onChange={this.SetKataKunci}></input>
+                      <form>
+                      <input  name="keySearch" placeholder='Search Movies'></input>
                       <button type="submit"><i class="fas fa-search"></i></button>
                       </form>
                     </div>
@@ -102,28 +118,6 @@ export default class Header extends Component {
                   <a href="">Sign In</a>
                 </div>
             </div>
-    </div>
-      )}
-
-    Navbar=()=>{
-      if(this.state.display === false){
-      return(
-        <>
-          <this.NavT/>
-        </>  
-      )}
-      else{
-        return(
-          <>
-            <this.NavT/>
-            <this.NavAfter/>
-        </>
-      )}}
-    
-render() {
-  return( 
-  <div>
-    <this.Navbar/>
-  </div>
-  )}
+        </div>
+    )
 }

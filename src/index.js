@@ -6,14 +6,14 @@ import Main from './components/Main';
 import {BrowserRouter as Router,Route, Routes,useLocation} from 'react-router-dom'
 import Header from './components/Header';
 import CurrentMovie from './components/CurrentMovie';
+import Negara from './components/Negara_movie';
 ReactDOM.render(
   <React.StrictMode>
-    <Header/>
     <Router>
       <Routes>
         <Route path='/' element={<Main/>}/>
         <Route exact path='/currentMovie/:id' element={<CurrentMovie/> }/>
-        
+        <Route path='/negara/:id' element={<Negara/>}/>
       </Routes>
     </Router>
   </React.StrictMode>,
