@@ -9,8 +9,6 @@ import Header from './Header';
 function Indonesia(){
     const [movie,setMovie] = useState([])
     const api_key ='fb280e17a4edec2501eec3c356448bf9'
-    // const tanggal_rilis1 = '2022-01-01'
-    // const tanggal_rilis2 = '2022-05-18'
     useEffect(()=>{
         const dd = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_original_language=ko`
         axios.get(dd)
@@ -270,10 +268,8 @@ function Trending(){
                 disabledClassName={'paginationDisabled'}
                 activeClassName={'paginationActive'}
                 />
-            </>
-            
-    )
-}
+            </>            
+    )}
 
 
 

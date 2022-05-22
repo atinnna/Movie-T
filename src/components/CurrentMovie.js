@@ -1,6 +1,5 @@
 import React, { Component, useEffect, useState } from 'react'
 import axios from 'axios'
-import Iframe from 'react-iframe'
 import { useLocation, Link } from "react-router-dom";
 import { useParams } from 'react-router-dom';
 import {Img} from 'react-image'
@@ -120,10 +119,12 @@ function SimilarMovies(){
     const jumlahHalaman = Math.ceil(sama.length/jumlahBoleh)
     const displayMovie = sama.slice(halamanKunjungan, halamanKunjungan+jumlahBoleh).map((hasil=>{
         return(
-        <div className='sim-movie'>
-            <Img src={`https://image.tmdb.org/t/p/original/${hasil.poster_path}`}/> <br/>
-            <span>{hasil.title}</span>
-        </div>
+                <Link to={`/currentMovie/${hasil.id}`} key = {hasil.id}>
+                    <div className='sim-movie'>
+                        <Img src={`https://image.tmdb.org/t/p/original/${hasil.poster_path}`}/> <br/>
+                        <span>{hasil.title}</span>
+                    </div>
+                </Link>
         )
     }))
     const gantiHalaman = ({selected})=>{
@@ -180,7 +181,9 @@ export default class CurrentMovie extends Component {
             <Header/>
             <div>
                 <View/>
+                <div className='current'>
                 <SimilarMovies/>
+                </div>
                 <RecomendasiFilm/>
             </div>
             </>

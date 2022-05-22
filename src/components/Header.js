@@ -1,14 +1,12 @@
-import React, { useState,useEffect} from 'react'
+import React, { useState} from 'react'
 import { Link } from 'react-router-dom'
-import axios from 'axios'
 function DispKategori(){
-    const [movie,setMovie] = useState([])
     const negara = {
         "indonesia":"id",
         "korea":"ko",
         "jepang":"ja",
         "china":"zh"
-    } 
+    }
     return(
         <div className="kategory_movies">         
           <div className='umum'>
@@ -22,15 +20,41 @@ function DispKategori(){
               </ul>
           </div>
           <div className='genre'>
-              <ul>
+          <ul>
                 <li className='li-first'>Genre</li>
+                <Link to={`/filter/18`}>
                 <li>Drama</li>
+                </Link>
+                <Link to={`/filter/27`}>
                 <li>Horror</li>
+                </Link>
+                <Link to={`/filter/16`}>
                 <li>Animation</li>
-                <li>K-Drama</li>
-                <li>Series</li>
+                </Link>
+                <Link to={`/filter/28`}>
+                  <li>Action</li>
+                </Link>
+                <Link to={`/filter/12`}>
+                  <li>Adventure</li>
+                </Link>
+                <Link to={`/filter/35`}>
+                  <li>Comedy</li>
+                </Link>
+                <Link to={`/filter/99`}>
+                  <li>documentary</li>
+                </Link>
+                <Link to={`/filter/878`}>
+                  <li>Science Fiction</li>
+                </Link>
+                <Link to={`/filter/53`}>
+                  <li>Thriller</li>
+                </Link>
+                <Link to={`/filter/10402`}>
+                  <li>Music</li>
+                </Link>
               </ul>
           </div>
+    
           <div className='genre-country'>
               <ul>
                 <li className='li-first'>Country</li>
@@ -46,7 +70,6 @@ function DispKategori(){
                 <Link to={`/negara/${negara.china}`}>
                 <li>China</li>
                 </Link>
-               
               </ul>
           </div>
         </div>
