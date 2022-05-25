@@ -13,10 +13,10 @@
 .nav>.kiri{
     font-size: 20px;
     display: flex;
-    width: 15%;
+    width: 5%;
     justify-content: space-between;
     padding-right: 25px;
-    padding-top: 10px;
+    padding-top: 0px;
 }
 .fa-bars{
     font-size: 20px;
@@ -53,9 +53,13 @@ a:hover{
     background-color: tomato;
 }
 .nav>.tengah{
-    width: 75%;
+    margin-left: 20px;
+    width: 85%;
     display: flex;
     font-size: 25px;
+}
+.title{
+    margin-top: 10px;
 }
 .tengah>.inputan{
     background-color: white;

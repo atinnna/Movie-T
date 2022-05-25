@@ -79,7 +79,6 @@ function DispKategori(){
 function Navbar(){
     const [state,setState] = useState({
         display:true,
-        title:"MOvBI",
         kata_kunci:""
     })
     if(state.display===false){
@@ -93,7 +92,6 @@ function Navbar(){
                         return{display:false}
                         }
                 })}> <i className="fas fa-bars"></i></button>
-                <span>{state.title}</span>
                 <DispKategori/>
             </div> 
         )
@@ -109,7 +107,6 @@ function Navbar(){
                         return{display:false}
                         }
                 })}> <i className="fas fa-bars"></i></button>
-                <span>{state.title}</span>
             </div> 
         )
     }
@@ -120,6 +117,8 @@ export default function Header() {
       return(
         <div className="nav">
         <Navbar/>
+        <div class='title'>
+          <Link to='/'>MovBi</Link></div>
         <div className='tengah'>
                 <div className='inputan'>
                     <div className='search'>
