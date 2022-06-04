@@ -249,7 +249,6 @@ li{
     color: black;
     padding:20px;
 }
-
 /* similar-movie */
 .grid-simir{
     display: grid;
@@ -313,7 +312,36 @@ li{
     height: 40%;
 }
 
-
+/* LOGIN-REGISTER */
+.log{
+    width: 30%;
+    position: absolute;
+    top:25%;
+    right: 30%;
+    left: 30%;
+    padding: 20px;
+    color: black;
+    border: 2px solid black;
+    border-radius: 10px
+}
+.log>.log-title{
+    text-align: center;
+    font-size: 15px;
+    margin-bottom: 10px
+}
+.form-group{
+    width: 100%;
+    padding: 10px 0;
+}
+.form-group label, .form-group input ,.form-group button{
+    width: 100%;
+    padding:7px 0;
+}
+.form-group button{
+    background-color: black;
+    color: wheat;
+    cursor: pointer;
+}
 @media(max-width:768px){
     .nav>.tengah{
         width: 70%;

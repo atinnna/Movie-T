@@ -137,7 +137,7 @@ export default function Header() {
                   <a href="">WatchList</a>
                 </div>
                 <div className='signIn link'>
-                  <a href="">Sign In</a>
+                  <Link to='/loginRegister'>Sign In</Link>
                 </div>
             </div>
         </div>
