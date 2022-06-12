@@ -43,7 +43,6 @@ function View(){
         .then(res=>{
             const yy = res.data['videos']['results'][0]['key']
             setVid(yy)
-            
         })
         .catch(err=>console.log(err))
     },[])
@@ -94,7 +93,7 @@ function View(){
                 </div>
             </div>
         </div>
-        </div>        
+    </div>        
     )
 }
 
@@ -175,7 +174,6 @@ function RecomendasiFilm(){
 
 export default class CurrentMovie extends Component {
     render() {
-            
         return (
             <>
             <Header/>

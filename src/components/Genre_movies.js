@@ -33,7 +33,6 @@ function Genre() {
        <div className='hmk'>
            <h3>Kumpulan Film</h3> 
        </div>
-     
    </div>
 
    <div className='pop-mo'>
@@ -64,7 +63,6 @@ function Genre() {
        activeClassName={'paginationActive'}
        />
    </>
-
   )
 }
 export default class Genre_movie extends Component {

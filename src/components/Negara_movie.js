@@ -74,9 +74,8 @@ export default class Negara_movie extends Component {
     return (
       <>
        <Header/>
-      <Negara/>
+       <Negara/>
       </>
-     
     )
   }
 }

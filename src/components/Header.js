@@ -1,5 +1,9 @@
-import React, { useState} from 'react'
+import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
+import axios from 'axios'
+import {Img} from 'react-image'
+import ReactPaginate from 'react-paginate' 
+
 function DispKategori(){
     const negara = {
         "indonesia":"id",
@@ -114,7 +118,33 @@ function Navbar(){
 }
 
 export default function Header() {
+  const [dataAll, setDataAll] = useState([])
+  const [searchI, searchItems] = useState("")
+  const key ='fb280e17a4edec2501eec3c356448bf9'
+
+    useEffect(()=>{
+      axios.get(`https://api.themoviedb.org/3/search/movie?api_key=${key}&query=${searchI}`)
+      .then(res=>{
+          const hasil = res.data.results
+          setDataAll(hasil)
+      }).catch(err=>{
+          console.log('kosonf') 
+      })
+    })
+
+    const searchMovies = (mov)=>{
+        searchItems(mov)
+      }
+  const [noHal,setNoHal] = useState(0)
+    const jmlBoleh = 6
+    const PageNow = noHal*jmlBoleh
+    const pageJmlNow = Math.ceil(dataAll.length/jmlBoleh)
+    const dataNow= dataAll.slice(PageNow,PageNow+jmlBoleh)
+    const gantiHalaman = ({selected})=>{
+    setNoHal(selected)
+    }
       return(
+        <>
         <div className="nav">
         <Navbar/>
         <div class='title'>
@@ -122,10 +152,8 @@ export default function Header() {
         <div className='tengah'>
                 <div className='inputan'>
                     <div className='search'>
-                      <form>
-                      <input  name="keySearch" placeholder='Search Movies'></input>
-                      <button type="submit"><i class="fas fa-search"></i></button>
-                      </form>
+                          <input  name="query" placeholder='Search Movies' value={searchI} onChange={(e)=>searchMovies(e.target.value)}></input>
+                          <button type="submit"><i class="fas fa-search"></i></button>
                     </div>
                 </div>
             </div>
@@ -137,9 +165,37 @@ export default function Header() {
                   <a href="">WatchList</a>
                 </div>
                 <div className='signIn link'>
-                  <Link to='/loginRegister'>Sign In</Link>
+                  <Link to='/loginRegister'>Sign In </Link>
                 </div>
             </div>
         </div>
+        <div className='pop-mo'>
+       {dataAll.length > 1 ? (
+            dataAll.map((item) => {
+                return (
+                  <>
+                  <div className='pop-mov' key ={item.id}>
+                  <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                    <div className='title_mo'>               
+                            <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                            <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                    </div>
+                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                  </Link>
+                  </div>
+             </>
+                )
+            })
+          ):
+          dataAll.map((item) => {
+          return(
+          <>
+          koosong
+          </>
+          ) }
+          )}
+          </div>
+      </>
+         
     )
-}
+      }

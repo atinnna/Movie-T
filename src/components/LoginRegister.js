@@ -4,33 +4,45 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import Header from './Header'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 const pengguna = z.object({
     nama:z.string({message:'nama harus huruf'}).min(5,{message:'Minimal harus 5 angka'}),
     email:z.string({message:'email harus huruf'}).email({message:'format email salah'}),
     password:z.string({message:'password harus berupa huruf'}).min(8,{message:"minimal jumlah pasword 8"}),
     konfirmasiPassword:z.string({message:'password harus berupa huruf'}).min(8,{message:"minimal jumlah pasword 8"})
 }).refine(res=>res.password===res.konfirmasiPassword,{
-    message:'Passwprd tidak sama',
+    message:'Password tidak sama',
     path:['konfirmasiPassword']
 })
-const onSubmit = (data)=>{
-    axios.post('http://localhost:4000/auth',{
-        nama:data.nama,
-        email:data.email,
-        password:data.password
-    })
-    window.location = '/login';
-}
+
 function Register(){
-    const {register,handleSubmit, formState:{errors}} = useForm({
+    const 
+    {register,handleSubmit, formState:{errors}} = useForm({
         resolver:zodResolver(pengguna)
     })
     const [val,valState] = useState('')
+    const [warning,setWarning] = useState('')
+    const onSubmit = (data)=>{
+        axios.post('http://localhost:4000/auth',{
+            nama:data.nama,
+            email:data.email,
+            password:data.password
+        }).then(res=>{
+            if(res.data.message){
+                setWarning(res.data.message)
+            }
+            else{
+                // console.log(namanya)
+                window.location = '/';
+            }
+        })
+    }
     return(
         <>
         <div className='log'>
         <div className='log-title'>                 
-        <h2>Sign In to MovBi</h2>
+        <h2>Sign Up to MovBi</h2>
+        <span>{warning}</span>
         </div>
         <form className='login' onSubmit={handleSubmit(onSubmit)} method='post'>
             <div className='form-group'>
@@ -55,6 +67,7 @@ function Register(){
             </div>
             <div className='form-group'>
                 <button type="submit">Sign In</button>
+                <div className="confirmAkun"> Sudah punya punya akun? <Link className="linkh" to={'/login'}>Login</Link></div>
             </div>
         </form>
     </div>

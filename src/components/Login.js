@@ -4,6 +4,7 @@ import {useForm} from 'react-hook-form'
 import {zodResolver} from '@hookform/resolvers/zod'
 import Header from './Header'
 import axios from 'axios'
+import {Link} from 'react-router-dom'
 const pengguna = z.object({
     nama:z.string({message:'nama harus huruf'}).min(5,{message:'Minimal harus 5 angka'}),
     password:z.string({message:'password harus berupa huruf'}).min(8,{message:"minimal jumlah pasword 8"}),
@@ -27,8 +28,7 @@ function Loginn(){
                 setLoginStatus(response.data.nama)
                 window.location = '/'
             }
-        })
-         
+        })  
     }
     return(
         <>
@@ -49,13 +49,13 @@ function Loginn(){
                 {errors.password?.message && <p>{errors.password?.message}</p>}
             </div>
             <div className='form-group'>
-                <button type="submit">Sign Up</button>
+                <button type="submit">Sign In</button>
+                <div className="confirmAkun"> Belum punya akun? <Link className="linkh" to={'/loginRegister'}>Register</Link></div>
             </div>
         </form>
     </div>
     </>
     )
-
 }
 export default class Login extends Component {
     render() {
