@@ -106,11 +106,21 @@ form button{
     background-color: black;
     color: white;
     position: absolute;
-    top: 10%;
+    top: 11%;
     width: 80%;
     display: grid;
     z-index: 10;
     grid-template-columns: repeat(3,1fr);
+    margin-top: 10px;
+    left: 0%;
+    font-size: 15px;
+}
+.genre h2{
+    text-align: center;
+}
+.genre>.sub-genre{
+    display: flex;
+    flex-direction: row;
 }
 ul li{
     list-style-type: none;
@@ -161,12 +171,20 @@ li{
 .linkh:hover{
     color: rgb(59, 59, 182);
 }
+.main-link{
+    color:white
+}
+.main-link:hover{
+    color: #a19696;
+}
+
 .pop-mo{
     padding: 20px;
     display: grid;
     grid-template-columns: repeat(6,1fr);
     row-gap: 40px;
     column-gap: 50px;
+    background-color: black;
 }
 .paginationBtn{
     margin-bottom: 20px;
@@ -195,6 +213,9 @@ li{
 }
 .fa-heart{
     color: red;
+}
+.fa-search{
+    font-size: 12px;
 }
 .title-year{
     text-align: center;

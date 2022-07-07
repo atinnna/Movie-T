@@ -43,7 +43,7 @@ function Negara() {
            return(
           
                    <div className='pop-mov' key ={item.id}>
-                        <Link to={`/currentMovie/${item.id}`} key = {item.id}>
+                        <Link className='main-link' to={`/currentMovie/${item.id}`} key = {item.id}>
                            <div className='title_mo'>               
                                    <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
                                    <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>

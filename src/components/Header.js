@@ -2,8 +2,6 @@ import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import {Img} from 'react-image'
-import ReactPaginate from 'react-paginate' 
-
 function DispKategori(){
     const negara = {
         "indonesia":"id",
@@ -24,54 +22,58 @@ function DispKategori(){
               </ul>
           </div>
           <div className='genre'>
+          <h2 className='li-first'>Genre</h2>
+          <div className='sub-genre'>
           <ul>
-                <li className='li-first'>Genre</li>
-                <Link to={`/filter/18`}>
+                <Link classsName='main-link' to={`/filter/18`}>
                 <li>Drama</li>
                 </Link>
-                <Link to={`/filter/27`}>
+                <Link classsName='main-link' to={`/filter/27`}>
                 <li>Horror</li>
                 </Link>
-                <Link to={`/filter/16`}>
+                <Link classsName='main-link' to={`/filter/16`}>
                 <li>Animation</li>
                 </Link>
-                <Link to={`/filter/28`}>
+                <Link classsName='main-link' to={`/filter/28`}>
                   <li>Action</li>
                 </Link>
-                <Link to={`/filter/12`}>
+                <Link classsName='main-link' to={`/filter/12`}>
                   <li>Adventure</li>
                 </Link>
-                <Link to={`/filter/35`}>
+            </ul>
+            <ul>
+                <Link classsName='main-link' to={`/filter/35`}>
                   <li>Comedy</li>
                 </Link>
-                <Link to={`/filter/99`}>
+                <Link classsName='main-link' to={`/filter/99`}>
                   <li>documentary</li>
                 </Link>
-                <Link to={`/filter/878`}>
+                <Link classsName='main-link' to={`/filter/878`}>
                   <li>Science Fiction</li>
                 </Link>
-                <Link to={`/filter/53`}>
+                <Link classsName='main-link' to={`/filter/53`}>
                   <li>Thriller</li>
                 </Link>
-                <Link to={`/filter/10402`}>
+                <Link classsName='main-link' to={`/filter/10402`}>
                   <li>Music</li>
                 </Link>
               </ul>
+              </div>
           </div>
     
           <div className='genre-country'>
               <ul>
                 <li className='li-first'>Country</li>
-                <Link to={`/negara/${negara.indonesia}`}>
+                <Link classsName='main-link' to={`/negara/${negara.indonesia}`}>
                 <li>Indonesia</li>
                 </Link>
-                <Link to={`/negara/${negara.korea}`}>
+                <Link classsName='main-link' to={`/negara/${negara.korea}`}>
                 <li>Korea</li>
                 </Link>
-                <Link to={`/negara/${negara.jepang}`}>
+                <Link classsName='main-link' to={`/negara/${negara.jepang}`}>
                 <li>Jepang</li>
                 </Link>
-                <Link to={`/negara/${negara.china}`}>
+                <Link classsName='main-link' to={`/negara/${negara.china}`}>
                 <li>China</li>
                 </Link>
               </ul>
@@ -148,12 +150,12 @@ export default function Header() {
         <div className="nav">
         <Navbar/>
         <div class='title'>
-          <Link to='/'>MovBi</Link></div>
+          <Link classsName='main-link' to='/'>MovBi</Link></div>
         <div className='tengah'>
                 <div className='inputan'>
                     <div className='search'>
                           <input  name="query" placeholder='Search Movies' value={searchI} onChange={(e)=>searchMovies(e.target.value)}></input>
-                          <button type="submit"><i class="fas fa-search"></i></button>
+                          <i class="fas fa-search"></i>
                     </div>
                 </div>
             </div>
@@ -165,35 +167,35 @@ export default function Header() {
                   <a href="">WatchList</a>
                 </div>
                 <div className='signIn link'>
-                  <Link to='/loginRegister'>Sign In </Link>
+                  <Link classsName='main-link' to='/loginRegister'>Sign In </Link>
                 </div>
             </div>
         </div>
         <div className='pop-mo'>
-       {dataAll.length > 1 ? (
-            dataAll.map((item) => {
-                return (
-                  <>
-                  <div className='pop-mov' key ={item.id}>
-                  <Link to={`/currentMovie/${item.id}`} key = {item.id}>
-                    <div className='title_mo'>               
-                            <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
-                            <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
-                    </div>
-                    <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
-                  </Link>
-                  </div>
-             </>
-                )
-            })
-          ):
-          dataAll.map((item) => {
-          return(
-          <>
-          koosong
-          </>
-          ) }
-          )}
+            {dataAll.length > 1 ? (
+                  dataAll.map((item) => {
+                      return (
+                        <>
+                        <div className='pop-mov' key ={item.id}>
+                        <Link classsName='main-link' to={`/currentMovie/${item.id}`} key = {item.id}>
+                          <div className='title_mo'>               
+                                  <Img className="img-movies" src={`https://image.tmdb.org/t/p/original/${item.poster_path}`} width={100}/>
+                                  <div className="one_mo"><i class="fas fa-heart"></i> <span>{item.vote_average}</span></div>
+                          </div>
+                          <div className='title-year'>{item.original_title}<br/>({item.release_date})</div>
+                        </Link>
+                        </div>
+                  </>
+                      )
+                  })
+                ):
+                dataAll.map((item) => {
+                return(
+                <>
+                koosong
+                </>
+                ) }
+                )}
           </div>
       </>
          

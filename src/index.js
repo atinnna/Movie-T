@@ -17,7 +17,6 @@ ReactDOM.render(
     <Router>
       <Routes>
         <Route exact path='/' element={<Main/>}/>
-
         <Route path='/loginRegister' element={<LoginRegister/>}/>
         <Route path='/login' element={<Login/>}/>
         <Route path='/currentMovie/:id' element={<CurrentMovie/> }/>

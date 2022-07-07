@@ -118,7 +118,7 @@ function SimilarMovies(){
     const jumlahHalaman = Math.ceil(sama.length/jumlahBoleh)
     const displayMovie = sama.slice(halamanKunjungan, halamanKunjungan+jumlahBoleh).map((hasil=>{
         return(
-                <Link to={`/currentMovie/${hasil.id}`} key = {hasil.id}>
+                <Link className='main-link' to={`/currentMovie/${hasil.id}`} key = {hasil.id}>
                     <div className='sim-movie'>
                         <Img src={`https://image.tmdb.org/t/p/original/${hasil.poster_path}`}/> <br/>
                         <span>{hasil.title}</span>
