@@ -285,14 +285,17 @@ li{
     margin-bottom: 5px;
 }
 .paginationBtn{
+    padding:0;
     width: 100%;
     list-style-type: none;
     display: flex;
+  
 }
 .paginationBtn>.prevBtn{
     padding: 10px;
     border: none;
     width: 45%;
+    text-align: left;
 }
 .paginationBtn>.nextLinkBtn{
     padding: 10px;
@@ -397,9 +400,19 @@ li{
 
 @media(max-width:888px){
     .nav>.tengah{
+        margin-top: 3%;
         width: 70%;
         display: flex;
-        margin-left: 20px;
+        padding:0;
+    }
+    .tengah>.inputan{
+        background-color: white;
+        border-radius: 8px;
+        width: 100%;
+        color: black;
+        display: flex;
+        flex-direction: row;
+        height:100%
     }
     .nav>.kanan{
       width: 7%;
@@ -420,6 +433,35 @@ li{
     .log{
         width: 50%; 
         margin: auto;      
+    }
+    .kategory_movies{
+        width: 100%;
+        display: grid;
+        z-index: 10;
+        grid-template-columns: repeat(2,1fr);
+        line-height: 0;
+        
+    }
+    .genre-country{
+        margin-top: 10%;
+    }
+    .li-firstt{
+        list-style-type: none;
+        text-align:center;
+        font-size: 30px;
+        margin-bottom: 10px;
+    }
+    .title{
+        padding: 3%;
+    }
+    .grid{
+        display: grid;
+        grid-template-columns: 1fr;
+        height: fit-content
+    }
+    .img-movies{
+        width: 100%;
+        height: 150px;
     }
   
 }

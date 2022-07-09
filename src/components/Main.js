@@ -10,7 +10,7 @@ function Indonesia(){
     const [movie,setMovie] = useState([])
     const api_key ='fb280e17a4edec2501eec3c356448bf9'
     useEffect(()=>{
-        const dd = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_original_language=ko`
+        const dd = `https://api.themoviedb.org/3/discover/movie?api_key=${api_key}&with_original_language=id`
         axios.get(dd)
         .then(res=>{
             const content = res.data.results

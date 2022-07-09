@@ -22,7 +22,7 @@ function DispKategori(){
               </ul>
           </div>
           <div className='genre'>
-          <h2 className='li-first'>Genre</h2>
+          <li className='li-firstt'>Movies</li>
           <div className='sub-genre'>
           <ul>
                 <Link classsName='main-link' to={`/filter/18`}>
