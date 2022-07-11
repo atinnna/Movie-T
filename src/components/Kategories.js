@@ -5,25 +5,23 @@ import {Img} from 'react-image'
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate'
 import Header from './Header';
+import imgj from '../florian-klauer-LmkaYtMpNS8-unsplash.jpg'
 
-function Negara() {
+function Kategori() {
   const key = "fb280e17a4edec2501eec3c356448bf9"
   const param = useParams()
+  const [movies,setMovies]= useState([])
   const [no,noHal] = useState(1)
-  const [movie,setMovie] = useState([])
+  const fetchData = ()=>{
+  axios.get(`https://api.themoviedb.org/3/movie/${param.id}?api_key=${key}&language=id-ID&region=ID&page=${no}`)
+  .then(res=>setMovies(res.data.results)).catch(err=>console.log(err))
+  }
   useEffect(()=>{
-    axios.get(`https://api.themoviedb.org/3/discover/movie?api_key=${key}&with_original_language=${param.id}&page=${no}`)
-    .then(res=>{
-      const hasil = res.data.results
-      setMovie(hasil)
-    })
-    .catch(err=>console.log(err))
+      fetchData()
   },[no])
-
-  const page = 20
-  const curretPage = no*page
+  console.log(movies)
   const jmlPage = 10
-  const inOnePage = movie
+  const inOnePage = movies
   const changePage = ({selected})=>{
     noHal(selected)
   } 
@@ -31,9 +29,10 @@ function Negara() {
     <>
     <div className="head-mo">    
        <div className='hmk'>
-           <h3>Film {param.id}</h3> 
+           <h3>Kumpulan {param.id}</h3> 
        </div>
    </div>
+
    <div className='pop-mo'>
        { inOnePage.map(item=>{
            return(
@@ -62,16 +61,15 @@ function Negara() {
        activeClassName={'paginationActive'}
        />
    </>
-
   )
 }
-export default class Negara_movie extends Component {
+export default class Kategories extends Component {
   render() {
     return (
-      <>
-       <Header/>
-       <Negara/>
-      </>
+      <div class="main" style={{backgroundImage:`url(${imgj})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
+      <Header/>
+      <Kategori/>
+      </div>
     )
   }
 }

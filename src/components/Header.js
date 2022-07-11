@@ -14,15 +14,21 @@ function DispKategori(){
           <div className='umum'>
               <ul>
                 <li className='li-first'>Movies</li>
+                <Link classsName='main-link' to={`/kategori/top_rated`}>
                 <li>Top 100 Movies</li>
-                <li>Top Box Office</li>
-                <li>Top K-Drama</li>
-                <li>Top Animation</li>
-                <li>Coming Soon</li>
+                </Link>
+                <Link classsName='main-link' to={`/kategori/popular`}>
+                <li>Popular Movies</li>
+                </Link>
+                <Link classsName='main-link' to={`/filter/trending`}>
+                <li>Trending MOvies</li>
+                </Link>
+                {/* <li>Top Animation</li>
+                <li>Coming Soon</li> */}
               </ul>
           </div>
           <div className='genre'>
-          <li className='li-firstt'>Movies</li>
+          <li className='li-firstt'>Genre</li>
           <div className='sub-genre'>
           <ul>
                 <Link classsName='main-link' to={`/filter/18`}>

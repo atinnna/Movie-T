@@ -10,6 +10,7 @@ import Negara from './components/Negara_movie';
 import Genre from './components/Genre_movies';
 import LoginRegister from './components/LoginRegister';
 import Login from'./components/Login'
+import Kategories from './components/Kategories';
 
 
 ReactDOM.render(
@@ -22,6 +23,7 @@ ReactDOM.render(
         <Route path='/currentMovie/:id' element={<CurrentMovie/> }/>
         <Route path='/negara/:id' element={<Negara/>}/>
         <Route path='/filter/:id' element={<Genre/>}/>
+        <Route path='/kategori/:id' element={<Kategories/>}/>
       </Routes>
     </Router>
   </React.StrictMode>,

@@ -7,6 +7,12 @@ import imgj from '../florian-klauer-LmkaYtMpNS8-unsplash.jpg'
 import Header from './Header';
 
 function Indonesia(){
+    const negara = {
+        "indonesia":"id",
+        "korea":"ko",
+        "jepang":"ja",
+        "china":"zh"
+    }
     const [movie,setMovie] = useState([])
     const api_key ='fb280e17a4edec2501eec3c356448bf9'
     useEffect(()=>{
@@ -35,7 +41,9 @@ function Indonesia(){
                <p>Film indoneia terbaru</p>
            </div>
           <div className='hmkk'>
-              <button>Selengkapnya</button>
+          <Link classsName='main-link' to={`/negara/${negara.indonesia}`}>
+             Selengkapnya
+          </Link>
           </div>
        </div>
   
@@ -103,7 +111,9 @@ function Popular() {
                     <p>{judul.desk}</p>
                 </div>
                <div className='hmkk'>
-                   <button>Selengkapnya</button>
+                <Link classsName='main-link' to={`/kategori/popular`}>
+                    Selengkapnya
+                </Link>
                </div>
             </div>
             <div className='pop-mo'>
@@ -171,7 +181,9 @@ function Top() {
                     <p>{judul.desk}</p>
                 </div>
                <div className='hmkk'>
-                   <button>Selengkapnya</button>
+               <Link classsName='main-link' to={`/kategori/top_rated`}>
+                    Selengkapnya
+                </Link>
                </div>
             </div>
             <div className='pop-mo'>
@@ -237,7 +249,9 @@ function Trending(){
                     <p>{judul.desk}</p>
                 </div>
                <div className='hmkk'>
-                   <button>Selengkapnya</button>
+               <Link classsName='main-link' to={`/kategori/trending`}>
+                    Selengkapnya
+                </Link>
                </div>
             </div>
        
