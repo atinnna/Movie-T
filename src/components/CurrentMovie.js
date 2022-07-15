@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import {Img} from 'react-image'
 import ReactPaginate from 'react-paginate';
 import Header from './Header';
+import Footer from './Footer';
 
 function View(){
     let key = "fb280e17a4edec2501eec3c356448bf9"
@@ -56,7 +57,7 @@ function View(){
                     <span>{movie.release_date}</span>
                 </div>
         <div className='grid'>
-            <Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} className="cMo-img" alt=""/>
+            <div className='img-c'><Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} className="cMo-img" alt=""/></div>
             <div className='m-deskripsi'>
                 <div className='flex-des'>
                     <ul>
@@ -66,7 +67,7 @@ function View(){
                         <li>Status</li>
                         <li>Vote</li>
                     </ul>
-                    <ul>
+                    <ul className='sh'>
                         <li>:</li>
                         <li>:</li>
                         <li>:</li>
@@ -130,7 +131,7 @@ function SimilarMovies(){
         setHalaman(selected)
     }
     return(
-        <div className='main'>
+        <div className='main-c'>
             <h2>Similar Movies</h2>
             <div className='grid-simir'>
                {displayMovie}
@@ -184,6 +185,7 @@ export default class CurrentMovie extends Component {
                 </div>
                 <RecomendasiFilm/>
             </div>
+            <Footer/>
             </>
         )
     }

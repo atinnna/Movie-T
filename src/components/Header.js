@@ -2,6 +2,15 @@ import React, { useState, useEffect} from 'react'
 import { Link } from 'react-router-dom'
 import axios from 'axios'
 import {Img} from 'react-image'
+function displayAkun(){
+  const prof = document.getElementById('rght')
+  if(prof.style.display==='block'){
+    prof.style.display = 'none'
+  }
+  else{
+    prof.style.display = 'block'
+  }
+}
 function DispKategori(){
     const negara = {
         "indonesia":"id",
@@ -124,7 +133,6 @@ function Navbar(){
     }
    
 }
-
 export default function Header() {
   const [dataAll, setDataAll] = useState([])
   const [searchI, searchItems] = useState("")
@@ -136,27 +144,21 @@ export default function Header() {
           const hasil = res.data.results
           setDataAll(hasil)
       }).catch(err=>{
-          console.log('kosonf') 
+          console.log('kosong') 
       })
     })
 
     const searchMovies = (mov)=>{
         searchItems(mov)
       }
-  const [noHal,setNoHal] = useState(0)
-    const jmlBoleh = 6
-    const PageNow = noHal*jmlBoleh
-    const pageJmlNow = Math.ceil(dataAll.length/jmlBoleh)
-    const dataNow= dataAll.slice(PageNow,PageNow+jmlBoleh)
-    const gantiHalaman = ({selected})=>{
-    setNoHal(selected)
-    }
+
       return(
         <>
         <div className="nav">
         <Navbar/>
         <div class='title'>
-          <Link classsName='main-link' to='/'>MovBi</Link></div>
+          <Link classsName='main-link' to='/'>MovBi</Link>
+        </div>
         <div className='tengah'>
                 <div className='inputan'>
                     <div className='search'>
@@ -174,6 +176,18 @@ export default function Header() {
                 </div>
                 <div className='signIn link'>
                   <Link classsName='main-link' to='/loginRegister'>Sign In </Link>
+                </div>
+                <button id='user-profile' onClick={displayAkun}><i class="fas fa-user"></i></button>
+            </div>
+            <div id='rght'>
+                <div className='pro link'>
+                  <a href="">LikeList</a>
+                </div>
+                <div className='watch link'>
+                  <a href="">WatchList</a>
+                </div>
+                <div className='link'>
+                  <Link classsName='d' to='/loginRegister'>Sign In </Link>
                 </div>
             </div>
         </div>
@@ -198,11 +212,12 @@ export default function Header() {
                 dataAll.map((item) => {
                 return(
                 <>
-                koosong
+                  Data Tidak Ditemukan
                 </>
                 ) }
                 )}
           </div>
+          
       </>
          
     )

@@ -6,12 +6,13 @@ body{
     background-color:black
 }
 .nav{
+    margin-top: 10px;
     background-color: black;
     display: flex;
     width: 100%;
     justify-content: space-between;
     color: white;
-    padding: 25px ;
+    padding: 10px ;
 }
 .nav>.kiri{
     font-size: 20px;
@@ -62,7 +63,7 @@ a:hover{
     font-size: 30px;
 }
 .title{
-    margin-top: 10px;
+    padding: 10px;
 }
 .tengah>.inputan{
     background-color: white;
@@ -96,6 +97,9 @@ form button{
     border: none;
     background-color: white;
 }
+#user-profile{
+    display:none
+}
 .nav>.kanan{
     margin-left: 30px;
     padding-top: 10px;
@@ -114,9 +118,10 @@ form button{
     display: grid;
     z-index: 10;
     grid-template-columns: repeat(3,1fr);
-    margin-top: 10px;
+    margin-top: 7px;
     left: 0%;
     font-size: 15px;
+    padding:20px 0;
 }
 .genre h2{
     text-align: center;
@@ -139,10 +144,20 @@ li{
 .main{
     padding: 20px 0;
     min-height: 80vh;
-   
+    margin:0
+}
+.main-c{
+    padding: 20px 0;
+    min-height: fit-content;
+    margin:0;
+}
+.main-c h2{
+    padding-bottom: 30px;
+    color: #f2f2f2;
 }
 .main h2{
-    padding: 10px;
+    padding-bottom: 30px;
+    color: #f2f2f2;
 }
 .head-mo{
     padding: 20px;
@@ -159,7 +174,7 @@ li{
 }
 .hmkk button{
     border: none;
-    background-color: black;
+    background-color: rgb(32, 32, 32);
     padding: 10px;
     cursor: pointer;
     color: #f2f2f2;
@@ -174,9 +189,6 @@ li{
 .linkh:hover{
     color: rgb(59, 59, 182);
 }
-.main-link{
-    color:white
-}
 .main-link:hover{
     color: #a19696;
 }
@@ -184,9 +196,9 @@ li{
     list-style-type: none;
     margin-left: 50px;
     font-size: 30px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
+    margin-top: 10px;
 }
-
 .pop-mo{
     padding: 20px;
     display: grid;
@@ -213,12 +225,12 @@ li{
     justify-content: space-between;
 }
 .title_mo>.one_mo{
-    height: 50px;
+    /* height: 50px; */
     background-color: rgb(55, 55, 61);
     border-radius: 0 20px 20px 0;
     position: absolute;
     z-index: 1;
-    padding: 15px 15px;
+    padding: 5px 15px;
 }
 .fa-heart{
     color: red;
@@ -253,11 +265,12 @@ li{
     display: flex;
     flex-direction: row;
 }
+
 ul li{
     list-style-type: none;
-}
-li{
-    padding: 14px 0;
+    display:flex;
+    justify-content: space-between;
+    padding: 15px 0;
 }
 .title-cur,.grid{
     background-color: rgba(43, 43, 40, 0.7);
@@ -273,7 +286,7 @@ li{
 .video{
     padding: 30px;
 }
-.a-btn{
+.a-btn{   
     background-color: rgb(3, 3, 43);
     color: wheat;
     padding: 10px;
@@ -284,7 +297,7 @@ li{
 }
 .current{
     color: black;
-    padding:20px;
+    padding: 0 20px;
 }
 /* similar-movie */
 .grid-simir{
@@ -296,32 +309,28 @@ li{
 .paginationBtn{
     padding:0;
     width: 100%;
-    list-style-type: none;
-    display: flex;
-  
+    display:flex;
+    background-color: transparent
 }
 .paginationBtn>.prevBtn{
     padding: 10px;
     border: none;
-    width: 45%;
-    text-align: left;
+    width: 50%;
+    justify-content: flex-start;
 }
 .paginationBtn>.nextLinkBtn{
+    justify-content: flex-end;
     padding: 10px;
-    width: 45%;
-    text-align: right;
+    width: 50%;
 }
+
 .prevBtn a,.nextLinkBtn a{
     padding: 10px;
     border: 2px solid black;
     background-color: grey;
     border-radius: 5px;
-    width: 45%;
-    text-align: right;
 }
 .paginationBtn li a{
-   /* background-color: azure; */
-    height: 5px;
     padding: 10px;
     color: white;
     background-color: grey;
@@ -329,18 +338,17 @@ li{
 .paginationActive a{
     color: white;
 }
-.paginationBtn> li,.paginationBtn>.paginationActive{
+.paginationBtn>li,.paginationBtn>.paginationActive{
     width: 5%;
-    padding: 10px 0px;
+    /* padding: px 0px; */
     border-radius: 10px;
+    cursor: pointer;
+    font-weight: bolder;
 }
 .paginationActive a, .paginationBtn a:hover{
     background-color: rgb(21, 21, 22);   
 }
-.paginationBtn a{
-    cursor: pointer;
-    font-weight: bolder;
-}
+
 .sim-movie{
     height: 30vh;
 }
@@ -383,6 +391,43 @@ li{
     color: wheat;
     cursor: pointer;
 }
+#rght{
+ display:none
+}
+
+/* footer */
+footer{
+    display:absolute;
+    top:90%;
+    color:white;
+    padding:30px;
+    background-color: rgb(37, 37, 37);
+}
+.grid-footer{
+    width: 50%;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(2,1fr);
+    grid-column-gap:20px;
+    margin-bottom: 30px;
+}
+.sosmed{
+    font-size:15px;
+    line-height:2
+}
+.sosmed h3{
+   margin-bottom: 15px;
+}
+.sosmed a{
+    margin-right: 10px;
+    margin-top: 30px;
+}
+.sosmed input{
+    width:100%;
+    height:5vh;
+    outline:none
+}
+
 @media(max-width:1000px){
     .nav>.tengah{
         width: 70%;
@@ -411,6 +456,7 @@ li{
 @media(max-width:888px){
     .nav>.tengah{
         margin-top: 3%;
+        margin-bottom: 0;
         width: 70%;
         display: flex;
         padding:0;
@@ -449,24 +495,116 @@ li{
         display: grid;
         z-index: 10;
         grid-template-columns: repeat(2,1fr);
-        line-height: 0;
-        
+        line-height: 0;   
     }
     .genre-country{
         margin-top: 10%;
     }
-
     .title{
-        padding: 3%;
+        padding-top: 15px;
+        padding-left: 20px;
+        font-size:16px  
     }
     .grid{
         display: grid;
         grid-template-columns: 1fr;
-        height: fit-content
+     
     }
     .img-movies{
-        width: 100%;
-        height: 150px;
+        /* width: 100%; */
+        height:0px;
     }
+    .grid>.img-c{
+        margin:0;
+        width:80%;       
+    }
+    .img-c>.cMo-img{
+        position: relative;
+        left:20%;
+        width: 80%;
+        align-items: center;
+        justify-content: center;
+        height:20vh;
+        margin:0;
+    }
+  
+    button .fa-bars{
+        margin-top: 0;
+        font-size: 25px;
+    }
+    .tengah{
+        margin-top:10px;
+        height:30px;
+        width: 100%;
+    }
+    .signIn{
+        display:none
+    }
+    /* .inputan{
+        display:grid;
+        grid-template-columns:1.9fr 0.1fr;
+        padding:0;
+        margin:0
+    }
+    .search{
+        height:100%;
+        margin:0;
+    }  */
+    /* .fa-search{
+        margin-right: 5px
+    } */
+    .grid-simir{
+        display: grid;
+        grid-template-columns: repeat(4,1fr);
+        grid-column-gap: 10px;
+        margin-bottom: 5px;
+    }
+    .sh>li{
+        padding-top: 20px;
+    }
+    .overview h2{
+        text-align: center;
+    }
+    .paginationBtn>li{
+        margin:4px
+    }
+    .paginationBtn>.prevBtn{
+        padding: 10px;
+        border: none;
+        width: 50%;
+        justify-content: flex-start;
+    }
+    .paginationBtn>.nextLinkBtn{
+      
+        width: 50%;
+    }
+    .fa-user{
+        display:block;
+        color: white;
+    }
+    #user-profile{
+        background-color:black;
+        border:none;
+        display:block;
+    }
+    #rght{
+        background-color:black;
+        position: absolute;
+        height:fit-content;
+        padding:10px 10px;
+        top:7%;
+        left: 80%;
+        display:none
+    }
+    #rght div{
+        margin-top: 10px;
+        display: flex;
+        flex-direction: column;
+    }
+    .grid-footer{
+        width: 100%;
+       
+    }
+
   
 }

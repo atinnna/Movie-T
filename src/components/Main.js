@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate' 
 import imgj from '../florian-klauer-LmkaYtMpNS8-unsplash.jpg'
 import Header from './Header';
+import Footer from './Footer';
 
 function Indonesia(){
     const negara = {
@@ -37,12 +38,11 @@ function Indonesia(){
         <>
         <div className="head-mo">    
            <div className='hmk'>
-               <h3>Indonesia</h3> 
-               <p>Film indoneia terbaru</p>
+               <h3>INDONESIAN </h3> 
            </div>
           <div className='hmkk'>
-          <Link classsName='main-link' to={`/negara/${negara.indonesia}`}>
-             Selengkapnya
+          <Link classsName='main-link-s' to={`/negara/${negara.indonesia}`}>
+            <button>Selengkapnya</button> 
           </Link>
           </div>
        </div>
@@ -108,11 +108,10 @@ function Popular() {
             <div className="head-mo">    
                 <div className='hmk'>
                     <h3>{judul.title}</h3> 
-                    <p>{judul.desk}</p>
                 </div>
                <div className='hmkk'>
                 <Link classsName='main-link' to={`/kategori/popular`}>
-                    Selengkapnya
+                <button>Selengkapnya</button> 
                 </Link>
                </div>
             </div>
@@ -178,11 +177,11 @@ function Top() {
              <div className="head-mo">    
                 <div className='hmk'>
                     <h3>{judul.title}</h3> 
-                    <p>{judul.desk}</p>
+                    {/* <p>{judul.desk}</p> */}
                 </div>
                <div className='hmkk'>
                <Link classsName='main-link' to={`/kategori/top_rated`}>
-                    Selengkapnya
+               <button>Selengkapnya</button> 
                 </Link>
                </div>
             </div>
@@ -223,7 +222,6 @@ function Trending(){
     const [trending,setTrending] = useState([])
     const [judul,deskripsi] = useState({
         title:'TRENDING MOVIES',
-        desk:'Film trending minggu ini'
     })
     useEffect(()=>{
         axios.get(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=en-US`)
@@ -246,11 +244,10 @@ function Trending(){
              <div className="head-mo">    
                 <div className='hmk'>
                     <h3>{judul.title}</h3> 
-                    <p>{judul.desk}</p>
                 </div>
                <div className='hmkk'>
                <Link classsName='main-link' to={`/kategori/trending`}>
-                    Selengkapnya
+               <button>Selengkapnya</button> 
                 </Link>
                </div>
             </div>
@@ -328,6 +325,7 @@ export default class componentName extends Component {
         <div className="main" style={{backgroundImage:`url(${imgj})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
             <Movies/>
         </div>
+        <Footer/>
         </>
         )
     }

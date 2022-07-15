@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate'
 import Header from './Header';
 import imgj from '../florian-klauer-LmkaYtMpNS8-unsplash.jpg'
+import Footer from './Footer';
 
 function Kategori() {
   const key = "fb280e17a4edec2501eec3c356448bf9"
@@ -69,6 +70,7 @@ export default class Kategories extends Component {
       <div class="main" style={{backgroundImage:`url(${imgj})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
       <Header/>
       <Kategori/>
+      <Footer/>
       </div>
     )
   }

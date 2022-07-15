@@ -5,6 +5,7 @@ import {Img} from 'react-image'
 import { Link } from 'react-router-dom';
 import ReactPaginate from 'react-paginate'
 import Header from './Header';
+import Footer from './Footer';
 
 function Negara() {
   const key = "fb280e17a4edec2501eec3c356448bf9"
@@ -71,6 +72,7 @@ export default class Negara_movie extends Component {
       <>
        <Header/>
        <Negara/>
+       <Footer/>
       </>
     )
   }
