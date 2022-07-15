@@ -51,13 +51,13 @@ function View(){
     console.log(video_url) 
     console.log(vid) 
     return(
-        <div className='main' style={{margin:0,padding:0,backgroundImage:`url(https://image.tmdb.org/t/p/original/${movie.poster_path})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
+        <div className='main-cc' style={{margin:0,padding:0,backgroundImage:`url(https://image.tmdb.org/t/p/original/${movie.poster_path})`,backgroundPosition:'center',backgroundRepeat:'no-repeat',backgroundSize:'cover'}}>
                  <div className='title-cur'>
                     <h2>{movie.original_title}</h2>
                     <span>{movie.release_date}</span>
                 </div>
         <div className='grid'>
-            <div className='img-c'><Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} className="cMo-img" alt=""/></div>
+            {/* <div className='img-c'><Img src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`} className="cMo-img" alt=""/></div> */}
             <div className='m-deskripsi'>
                 <div className='flex-des'>
                     <ul>
