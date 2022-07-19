@@ -36,6 +36,23 @@ function DispKategori(){
                 <li>Coming Soon</li> */}
               </ul>
           </div>
+          <div className='umumy'>
+              <ul>
+                <li className='li-first'>Country</li>
+                <Link classsName='main-link' to={`/negara/${negara.indonesia}`}>
+                <li>Indonesia</li>
+                </Link>
+                <Link classsName='main-link' to={`/negara/${negara.korea}`}>
+                <li>Korea</li>
+                </Link>
+                <Link classsName='main-link' to={`/negara/${negara.jepang}`}>
+                <li>Jepang</li>
+                </Link>
+                <Link classsName='main-link' to={`/negara/${negara.china}`}>
+                <li>China</li>
+                </Link>
+              </ul>
+          </div>
           <div className='genre'>
           <li className='li-firstt'>Genre</li>
           <div className='sub-genre'>
@@ -76,23 +93,7 @@ function DispKategori(){
               </div>
           </div>
     
-          <div className='genre-country'>
-              <ul>
-                <li className='li-first'>Country</li>
-                <Link classsName='main-link' to={`/negara/${negara.indonesia}`}>
-                <li>Indonesia</li>
-                </Link>
-                <Link classsName='main-link' to={`/negara/${negara.korea}`}>
-                <li>Korea</li>
-                </Link>
-                <Link classsName='main-link' to={`/negara/${negara.jepang}`}>
-                <li>Jepang</li>
-                </Link>
-                <Link classsName='main-link' to={`/negara/${negara.china}`}>
-                <li>China</li>
-                </Link>
-              </ul>
-          </div>
+         
         </div>
     )
 }

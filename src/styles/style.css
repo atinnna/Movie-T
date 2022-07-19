@@ -32,17 +32,17 @@ body{
     font-size: 10px;
     cursor: pointer;
 }
-.link:hover{
+/* .link:hover{
     background-color: rgba(255, 255, 255, 0.747);
-    color: black;
-}
+    color: white
+} */
 a{
     text-decoration: none;
     color: white;
 }
-a:hover{
+/* a:hover{
     color: black;
-}
+} */
 .kiri>.btn{
     background-color: rgba(255, 255, 255, 0.747);
     font-weight: 900;
@@ -117,10 +117,10 @@ form button{
     width: 80%;
     display: grid;
     z-index: 10;
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
     margin-top: 7px;
     left: 0%;
-    font-size: 15px;
+    font-size: 20px;
     padding:20px 0;
 }
 .genre h2{
@@ -142,15 +142,38 @@ li{
 }
 /* MAIN */
 .main{
-    padding: 20px 0;
+    /* padding: 0px 0; */
     min-height: 80vh;
-
     margin:0
 }
-.main-cc{
+/* .main-cc{
     padding: 20px 0;
     min-height: 95vh;
     margin:0
+} */
+.main-cc{
+    padding: 20px 0px;
+    font-size: 25px;
+}
+.title-cur{
+    /* text-align: center; */
+    padding: 40px 0;
+    width:100%;
+    text-align: center;
+}
+.grid>{
+    width:100%;
+}
+.grid>.m-deskripsi{
+    width:100%;
+    margin-left:60%
+}
+.m-deskripsi>.cntn{
+    text-align: left;
+}
+.m-deskripsi>.overview{
+    padding-left: 48px;
+    text-align: justify;
 }
 .main-c{
     padding: 20px 0;
@@ -160,6 +183,8 @@ li{
 .main-c h2{
     padding-bottom: 30px;
     color: #f2f2f2;
+    font-size: 35px;
+    text-decoration: underline;
 }
 .main h2{
     padding-bottom: 30px;
@@ -197,6 +222,9 @@ li{
 }
 .main-link:hover{
     color: #a19696;
+}
+.main-link>li:hover{                                                                                                                           
+     color: grey
 }
 .li-firstt{
     list-style-type: none;
@@ -247,10 +275,7 @@ li{
 .title-year{
     text-align: center;
 }
-.title-cur{
-    text-align: center;
-    padding: 40px 0;
-}
+
 .grid{
     display: grid;
     grid-template-columns: repeat(2,1fr);
@@ -263,10 +288,6 @@ li{
     left: 40%;
     width: 50%;
     height: 80vh;
-}
-.grid>.m-deskripsi{
-    width: 100%;
-  
 }
 .m-deskripsi>.flex-des{
     width:100%;
@@ -503,10 +524,12 @@ footer{
     }
     .kategory_movies{
         width: 100%;
-        display: grid;
-        z-index: 10;
+        font-size:15px;
         grid-template-columns: repeat(2,1fr);
         line-height: 0;   
+    }
+    ul>.li-first, .genre>.li-firstt{
+        font-size:20px
     }
     .genre-country{
         margin-top: 10%;
@@ -551,23 +574,12 @@ footer{
     .signIn{
         display:none
     }
-    /* .inputan{
-        display:grid;
-        grid-template-columns:1.9fr 0.1fr;
-        padding:0;
-        margin:0
-    }
-    .search{
-        height:100%;
-        margin:0;
-    }  */
-    /* .fa-search{
-        margin-right: 5px
-    } */
+  
     .grid-simir{
         display: grid;
         grid-template-columns: repeat(4,1fr);
         grid-column-gap: 10px;
+        grid-row-gap: 40px;
         margin-bottom: 5px;
     }
     .sh>li{
@@ -616,23 +628,35 @@ footer{
         width: 100%;
        
     }
-    
+    .grid-footer>.sosmed{
+        font-size:10px
+    }
     .grid>.m-deskripsi{
-        width: 100%;
-        
-    }
-    .m-deskripsi>.flex-des{
         width:100%;
-       font-size:10px
+        margin-left:0;
+        font-size:15px
     }
-    .m-deskripsi{
-        margin:0;
+    .m-deskripsi>.cntn{
+        text-align: left;
+    }
+    .m-deskripsi>.overview{
+        padding: 10px 15px;
+        text-align: justify;
+    }
+    .overview>.video{
+        margin-left: 25%;
+    }
+    .log{
+        width: 70%;
         position: absolute;
-        left:0%;
-        right:100%;
-        background-color: rgba(43, 43, 40, 0.7);
-        height:80vh
-       
+        top:25%;
+        right: 15%;
+        left: 15%;
+        padding: 20px;
+        color: black;
+        background-color: #f2f2f2;
+        border: 2px solid black;
+        border-radius: 10px
     }
 
   

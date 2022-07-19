@@ -67,17 +67,17 @@ function View(){
                         <li>Status</li>
                         <li>Vote</li>
                     </ul>
-                    <ul className='sh'>
+                    {/* <ul className='sh'>
                         <li>:</li>
                         <li>:</li>
                         <li>:</li>
                         <li>:</li>
                         <li>:</li>
-                    </ul>
+                    </ul> */}
                     <ul>
-                        <li>{ arrmov.map(d=><span>{d.name}, </span>)}
+                        <li>{ arrmov.map(d=>d.name).join(', ')}
                         </li>
-                        <li>{arrpro.map(p=><span>{p.name}, </span>)}</li>
+                        <li>{arrpro.map(p=>p.name).join(', ')}</li>
                         <li>{movie.revenue}</li>
                         <li>{movie.status}</li>
                         <li>{movie.vote_average} dari {movie.vote_count} orang</li>
